@@ -6,4 +6,8 @@ class Client < ApplicationRecord
   has_one :billing_address, class_name: 'Address'
 
   accepts_nested_attributes_for :addresses
+
+  validates :first_name, :last_name, :phone_number, presence: true
+
 end
+

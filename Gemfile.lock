@@ -55,6 +55,14 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-console (0.0.4)
+      capybara
+      rails (>= 3.0)
+    capybara-rails (0.0.2)
+      capybara
+      capybara-console
+      database_cleaner
+      exception_notification
     capybara-webkit (1.12.0)
       capybara (>= 2.3.0, < 2.13.0)
       json
@@ -78,6 +86,9 @@ GEM
       dotenv (= 2.1.2)
       railties (>= 3.2, < 5.1)
     erubis (2.7.0)
+    exception_notification (4.2.1)
+      actionmailer (>= 4.0, < 6)
+      activesupport (>= 4.0, < 6)
     execjs (2.7.0)
     factory_girl (4.8.0)
       activesupport (>= 3.0.0)
@@ -235,6 +246,8 @@ DEPENDENCIES
   awesome_print
   better_errors
   byebug
+  capybara
+  capybara-rails
   capybara-webkit
   climate_control
   coffee-rails (~> 4.2)
