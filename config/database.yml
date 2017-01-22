@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+  host: localhost
+
+development:
+  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  database: landscaping_app_development
+
+test:
+  <<: *default
+  database: landscaping_app_test
