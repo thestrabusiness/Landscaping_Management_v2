@@ -9,5 +9,18 @@ class Client < ApplicationRecord
 
   validates :first_name, :last_name, :phone_number, presence: true
 
+  def full_name
+    [first_name, last_name].each{ |x| x.strip!}.join(' ')
+  end
+
+  def full_billing_address
+    [
+        billing_address.street,
+        billing_address.city,
+        billing_address.state,
+        billing_address.zip
+    ].join(' ')
+  end
+
 end
 

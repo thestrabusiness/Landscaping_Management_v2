@@ -1,0 +1,41 @@
+<p id='notice'><%= notice %></p>
+
+<h1>Current Clients</h1>
+<br>
+<%= link_to 'Add New Client', new_client_path %>
+
+<div class='client-list'>
+  <div class='client-list-header'>
+    <div class='client-list-header-item first-name'>
+      First Name
+    </div>
+    <div class='client-list-header-item last-name'>
+      Last Name
+    </div>
+    <div class='client-list-header-item address'>
+      Address
+    </div>
+    <div class='client-list-header-item balance'>
+      Balance
+    </div>
+  </div>
+
+  <% @clients.each do |client| %>
+    <%= link_to client_path(client) do %>
+    <div>
+      <div class='client-list-item first-name'>
+        <%= client.first_name %>
+      </div>
+      <div class='client-list-item last-name'>
+        <%= client.last_name %>
+      </div>
+      <div class='client-list-item address'>
+        <%= client.full_billing_address %>
+      </div>
+      <div class='client-list-item balance'>
+        <%= client.balance %>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+</div>

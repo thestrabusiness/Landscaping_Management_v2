@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :client do
-    first_name 'Anthony'
+    sequence(:first_name) { |n| "Anthony #{n}"}
     last_name 'Moffa'
-    email 'moffa.an@gmail.com'
+    sequence(:email) { |n| "moffa.an+test#{n}@gmail.com"}
     phone_number '9787663585'
 
     trait :with_billing_address do
