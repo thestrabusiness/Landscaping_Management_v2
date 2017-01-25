@@ -21,6 +21,7 @@ gem 'will_paginate'
 gem 'unicorn'
 gem 'simple_form'
 gem 'thor', '0.19.1'
+gem 'time_for_a_boolean'
 
 
 group :development, :test do

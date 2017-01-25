@@ -7,7 +7,13 @@ class Client < ApplicationRecord
 
   accepts_nested_attributes_for :addresses
 
+  time_for_a_boolean :deleted
+
   validates :first_name, :last_name, :phone_number, presence: true
+
+  def self.default_scope
+    where(deleted_at: nil)
+  end
 
   def full_name
     [first_name, last_name].each{ |x| x.strip!}.join(' ')

@@ -17,12 +17,12 @@ class ClientsController < ApplicationController
   end
 
   def create
-    binding.pry
     @client = Client.new(client_params)
     @billing_address = Address.new(address_params)
-    @client.billing_address = @billing_address.create(params[address_params])
+    @billing_address.client = @client
+    @client.billing_address = @billing_address
 
-    if @client.save! && @billing_address.save!
+    if @client.save!
       redirect_to client_path(@client), notice: 'The client was successfully saved!'
     else
       flash.now[:notice] = 'The client could not be saved!'
@@ -36,30 +36,35 @@ class ClientsController < ApplicationController
   end
 
   def update
-    if client.save!
+    if client.update(client_params)
       redirect_to client_path(@client), notice: 'The client was successfully saved!'
     else
-      @address = @client.billing_address
+      @billing_address = @client.billing_address
       flash.now[:notice] = 'The client could not be updated!'
       render :edit
     end
   end
 
   def destroy
-
+    @client = Client.find(params[:id])
+    @client.deleted_at = Time.current
+    @client.save
   end
 
   private
 
   def set_client
     @client = Client.find(params[:id])
+    if @client.deleted?
+      raise ActiveRecord::NotFound
+    end
   end
 
   def client_params
-    params.require(:client).permit(:first_name, :last_name, :phone_number, :email)
+    params.require(:client).permit(:first_name, :last_name, :phone_number, :email, :billing_address_id)
   end
 
   def address_params
-    params.require(:address).permit(:street, :city, :state, :zip)
+    params.require(:address).permit(:street, :city, :state, :zip, :client_id)
   end
 end

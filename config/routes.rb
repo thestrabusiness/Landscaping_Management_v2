@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  resources :clients do
-    resources :addresses, except: [:index]
-  end
+  resources :clients
+  resources :addresses, except: [:index]
   resources :invoices do
     resources :invoice_items, except: [:index, :show]
   end
