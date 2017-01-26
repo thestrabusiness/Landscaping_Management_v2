@@ -6,7 +6,6 @@ class ClientsController < ApplicationController
   def show
     set_client
     @billing_address = @client.billing_address
-    @client_prices = @client.client_prices
     @addresses = @client.addresses
     @invoices = @client.invoices
     @payments = @client.payments
@@ -23,7 +22,7 @@ class ClientsController < ApplicationController
     @billing_address.client = @client
     @client.billing_address = @billing_address
 
-    if @client.save!
+    if @client.save
       redirect_to client_path(@client), notice: 'The client was successfully saved!'
     else
       flash.now[:notice] = 'The client could not be saved!'
@@ -40,7 +39,6 @@ class ClientsController < ApplicationController
     if client.update(client_params)
       redirect_to client_path(@client), notice: 'The client was successfully updated!'
     else
-      @billing_address = @client.billing_address
       flash.now[:notice] = 'The client could not be updated!'
       render :edit
     end
