@@ -3,95 +3,39 @@
 <div class='client-page-container'>
   <div class='client-left-container'>
     <div class='client-details-container'>
-      
+      <div class ='details-section-header'>
+        Client Information
+        <%= link_to '+', edit_client_path %>
+      </div>
+
+      <%= render 'detail', header: 'Client Name', content: @client.full_name, css_class: 'name' %>
+      <%= render 'detail', header: 'Balance', content: number_to_currency(@client.balance), css_class: 'balance' %>
+      #OUTSTANDING INVOICES
+    </div>
+
+    <div class='billing-address-container'>
+      <div class='details-section-header'>
+        Billing Address
+        <%= link_to '+', edit_address_path(@billing_address) %>
+      </div>
+      <div class='details-subsection'>
+      <%= render 'detail', header: 'Street', content: @billing_address.street, css_class: 'street' %>
+      <%= render 'detail', header: 'City', content: @billing_address.city, css_class: 'city' %>
+      <%= render 'detail', header: 'State', content: @billing_address.state, css_class: 'state' %>
+      <%= render 'detail', header: 'Zip', content: @billing_address.zip, css_class: 'zip' %>
+      </div>
+    </div>
+    <div class='job-addresses-container'>
+      <div class='details-section-header'>
+        <% @addresses.each do |address| %>
+          <%= render 'job_addresses', address: address %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
-
-<%= render 'patient_details_topbar' %>
-
-<div class='patient-page-container'>
-  <div class='patient-left-container'>
-    <div class='patient-info-container'>
-      <div class='details-section-header'>
-        Patient Information
-        <%= link_to edit_patient_path(patient) do %>
-            <%= inline_svg('edit-btn.svg', class: 'edit-btn') %>
-        <% end %>
-      </div>
-
-      <%= render 'patient_general_info' %>
-      <%= render 'patient_contact_info' %>
-      <%= render 'patient_medical_info' %>
-    </div>
-
-    <div class='admissions-info-container'>
-      <% admissions.each_with_index do |admission, index| %>
-          <%= render 'admission_info',
-                     admission: admission,
-                     number: admissions.length - index %>
-      <% end %>
-    </div>
-
-    <%= link_to new_patient_admission_path(patient), class: 'add-admission' do %>
-        <%= inline_svg('blue.svg', class: 'plus-btn') %> Add Admission
+  <div class='client-right-container'>
+    <% @address.each do |address| %>
+      <%= render 'address_services', address: address, services: address.client_prices %>
     <% end %>
-
-    <div class='caregivers-info-container'>
-      <% care_givers.each_with_index do |care_giver, index| %>
-          <%= render 'patient_care_giver_info',
-                     care_giver: care_giver,
-                     number: index + 1 %>
-      <% end %>
-    </div>
-
-    <%= link_to new_patient_care_giver_path(patient), class: 'add-caregiver' do %>
-        <%= inline_svg('blue.svg', class: 'plus-btn') %> Add Patient-Caregiver
-    <% end %>
-  </div>
-
-  <div class='patient-right-container'>
-    <div class='patient-readings-container'>
-      <div class='details-section-header'>
-        <%= link_to "#{pluralize(unresolved_tickets.count, 'Issue')}",'#', class: 'patient-data-link issues active', data: { section_name: 'unresolved-tickets' } %>
-        <%= link_to 'Today', '#', class: 'patient-data-link today', data: { section_name: 'today' } %>
-        <%= link_to 'History', '#', class: 'patient-data-link history', data: { section_name: 'history' } %>
-        <%= link_to 'All Issues', '#', class: 'patient-data-link all-issues', data: { section_name: 'all-issues' } %>
-        <%= link_to new_patient_ticket_path(patient), class: 'new-ticket-button' do %>
-            <%= inline_svg('blue.svg', class: 'plus-btn') %>
-        <% end %>
-      </div>
-
-      <%= render 'unresolved_tickets', wrapper_class: 'patient-data-section' %>
-      <%= render 'todays_readings', wrapper_class: 'patient-data-section' %>
-      <%= render 'historical_readings', wrapper_class: 'patient-data-section' %>
-      <%= render 'historical_tickets', wrapper_class: 'patient-data-section' %>
-
-      <div id='manual-reading-notice'>
-        * indicates a reading that was taken manually.
-      </div>
-    </div>
-
-    <div class='patient-medications-container'>
-      <%= link_to patient_medications_path(patient) do %>
-          <div class='details-section-header'>
-            Medication <%= inline_svg('medication-arrow.svg', class: 'medication-arrow') %>
-          </div>
-      <% end %>
-
-      <%= render 'current_medications'%>
-    </div>
-
-    <div class='patient-notes-container'>
-      <div class='details-section-header'>Notes
-        <%= link_to edit_patient_path(patient, anchor: 'patient_notes'), class: 'edit-patient-notes' do %>
-            <%= inline_svg('edit-btn.svg', class: 'edit-btn') %>
-        <% end %>
-      </div>
-
-      <div id="notes-wrapper">
-        <%= render 'notes/index', patient: patient, notes: patient.all_notes.order(updated_at: :desc) %>
-      </div>
-    </div>
   </div>
 </div>

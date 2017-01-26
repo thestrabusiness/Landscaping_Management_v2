@@ -1,0 +1,11 @@
+<div class='details-section-header'>
+  <%= address.street %>
+  <%= link_to '+', edit_address_path(address)%>
+</div>
+
+<div class='details-subsection'>
+  <%= render 'detail', header: 'Street', content: address.street, css_class: 'street' %>
+  <%= render 'detail', header: 'City', content: address.city, css_class: 'city' %>
+  <%= render 'detail', header: 'State', content: address.state, css_class: 'state' %>
+  <%= render 'detail', header: 'Zip', content: address.zip, css_class: 'zip' %>
+</div>

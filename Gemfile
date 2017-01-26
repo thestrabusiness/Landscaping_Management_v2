@@ -21,7 +21,7 @@ gem 'will_paginate'
 gem 'unicorn'
 gem 'simple_form'
 gem 'thor', '0.19.1'
-gem 'time_for_a_boolean'
+gem 'time_for_a_boolean', git: 'https://github.com/calebthompson/time_for_a_boolean.git'
 
 
 group :development, :test do

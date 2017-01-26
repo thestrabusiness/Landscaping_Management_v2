@@ -1,0 +1,35 @@
+<div class='client-address-services-container'>
+  <div class='details-section-header'>
+    <% address.street %> Services
+  </div>
+
+  <div class='table-row-headers two-columns services'>
+    <div class='cell header name'>
+      Service
+    </div>
+
+    <div class='cell header price'>
+      Price
+    </div>
+
+    <div class='cell header blank'>
+    </div>
+
+  </div>
+
+  <div class='table-rows'>
+    <% services.each do |service| %>
+      <div class='cell name'>
+        <%= service.name %>
+      </div>
+
+      <div class='cell price'>
+        <%= service.price %>
+      </div>
+
+      <div class='cell buttons'>
+        some buttons here?
+      </div>
+    <% end %>
+  </div>
+</div>
