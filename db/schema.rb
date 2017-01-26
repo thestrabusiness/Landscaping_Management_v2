@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170122172536) do
+ActiveRecord::Schema.define(version: 20170126213759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,15 +24,6 @@ ActiveRecord::Schema.define(version: 20170122172536) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_addresses_on_client_id", using: :btree
-  end
-
-  create_table "client_prices", force: :cascade do |t|
-    t.string   "name"
-    t.money    "price",      scale: 2
-    t.integer  "client_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.index ["client_id"], name: "index_client_prices_on_client_id", using: :btree
   end
 
   create_table "clients", force: :cascade do |t|
@@ -82,6 +73,17 @@ ActiveRecord::Schema.define(version: 20170122172536) do
     t.datetime "deleted_at"
     t.index ["client_id"], name: "index_payments_on_client_id", using: :btree
     t.index ["invoice_id"], name: "index_payments_on_invoice_id", using: :btree
+  end
+
+  create_table "service_prices", force: :cascade do |t|
+    t.string   "name"
+    t.money    "price",      scale: 2
+    t.integer  "client_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "address_id"
+    t.index ["address_id"], name: "index_service_prices_on_address_id", using: :btree
+    t.index ["client_id"], name: "index_service_prices_on_client_id", using: :btree
   end
 
   create_table "services", force: :cascade do |t|

@@ -1,4 +1,4 @@
-class ClientPrice < ApplicationRecord
+class ServicePrice < ApplicationRecord
   belongs_to :address
   belongs_to :client
 

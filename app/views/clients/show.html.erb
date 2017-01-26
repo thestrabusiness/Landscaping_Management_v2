@@ -35,7 +35,7 @@
   </div>
   <div class='client-right-container'>
     <% @address.each do |address| %>
-      <%= render 'address_services', address: address, services: address.client_prices %>
+      <%= render 'address_services', address: address, services: address.service_prices %>
     <% end %>
   </div>
 </div>

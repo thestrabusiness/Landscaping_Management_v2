@@ -1,5 +1,5 @@
 class Client < ApplicationRecord
-  has_many :client_prices
+  has_many :service_prices
   has_many :invoices
   has_many :payments
   has_many :addresses
