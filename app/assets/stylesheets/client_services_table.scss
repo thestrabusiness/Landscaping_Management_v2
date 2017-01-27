@@ -1,0 +1,59 @@
+.client-address-services-container{
+  clear: both;
+}
+
+.service {
+  display: block;
+
+  &:nth-child(even) {
+    background-color: $white;
+  }
+
+  &:nth-child(odd) {
+    background-color: $off-white;
+  }
+}
+
+.row {
+  height: $row-height;
+
+  &:not(.medication-table &) {
+    &:nth-child(odd) {
+      background-color: $off-white;
+    }
+  }
+}
+
+.table-row-headers {
+  height: $row-height;
+  background-color: $white;
+}
+
+.cell {
+  @include vertically-centered-text($row-height);
+
+  float: left;
+  padding-left: 30px;
+
+  &.overflow-text {
+    @include overflow-text;
+  }
+}
+
+.header {
+  color: $warm-grey;
+}
+
+.row-border {
+  margin: 0 27px;
+  padding: 0;
+  border-bottom: 1px solid $light-grey;
+}
+
+.name {
+  @include span-columns(5);
+}
+
+.price {
+  @include span-columns(2);
+}

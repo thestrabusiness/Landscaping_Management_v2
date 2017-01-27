@@ -1,3 +1,7 @@
+body {
+  font-family: $base-font;
+}
+
 .clients-page-title{
   font-size: 22px;
   margin-top: 27px;
@@ -5,30 +9,53 @@
 
 .client-list {
   @include position(relative, 20px null null null);
-  @include span-columns(10);
-  @include shift(.25);
+  @include span-columns(8);
+  @include shift(.50);
 
   min-width: $min-width-all-clients;
 
   .client-list-header-item {
     @include position(relative, 15px null null null);
-    @include span-columns(2 of 8);
+  }
+
+  .client-list-header-item.first-name,
+  .client-list-header-item.last-name{
+    @include span-columns(4 of 16)
+  }
+
+  .client-list-header-item.address {
+    @include span-columns(4 of 16)
+  }
+
+  .client-list-header-item.balance{
+    @include span-columns(4 of 16)
   }
 
   .client-list-item {
-    @include position(relative, 0px 20px null null);
-    @include span-columns(2 of 8);
-    @include overflow-text;
+    @include position(relative, 5px 40px null null);
     height: $row-height;
   }
 
+  .client-list-item.first-name,
+  .client-list-item.last-name{
+      @include span-columns(4 of 16)
+    }
+
+  .client-list-item.address {
+    @include span-columns(4 of 16)
+  }
+
+  .client-list-item.balance{
+    @include span-columns(4 of 16)
+  }
+
   .first-name,
-  .last-name,
-  .address{
+  .last-name {
     padding-left: 30px;
   }
 
-  .balance {
+  .balance,
+  .address {
     text-align: center;
   }
 }

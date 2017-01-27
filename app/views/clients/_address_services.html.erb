@@ -1,9 +1,9 @@
 <div class='client-address-services-container'>
   <div class='details-section-header'>
-    <% address.street %> Services
+    <%= address.street %> Services
   </div>
 
-  <div class='table-row-headers two-columns services'>
+  <div class='table-row-headers'>
     <div class='cell header name'>
       Service
     </div>
@@ -17,7 +17,7 @@
 
   </div>
 
-  <div class='table-rows'>
+  <div class='table-rows service'>
     <% services.each do |service| %>
       <div class='cell name'>
         <%= service.name %>
@@ -33,3 +33,4 @@
     <% end %>
   </div>
 </div>
+<br>

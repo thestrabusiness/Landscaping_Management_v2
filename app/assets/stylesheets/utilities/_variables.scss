@@ -1,5 +1,11 @@
 $row-height: 70px;
-$min-width-all-clients: 1200px;
+$header-height: 86px;
+$subheader-height: 56px;
+$detail-content-height: 24px;
+
+$min-width-application-topbar: 1200px;
+$min-width-all-clients: 1150px;
+
 
 $small-font-size: 13px;
 $base-font-size: 16px;
@@ -9,6 +15,7 @@ $large-font-size: 24px;
 
 $white: #ffffff;
 $off-white: #f8f8f8;
+$light-grey: #d8d8d8;
 $warm-grey: #9c9c9c;
 $greyish-brown: #4a4a4a;
 $medium-gray: #999;
@@ -17,3 +24,4 @@ $tomato: #e74c3c;
 $base-green: #3b7b39;
 
 $base-font-color: $dark-gray;
+$base-font: 'Helveticaneue';

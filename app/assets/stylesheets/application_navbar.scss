@@ -1,5 +1,6 @@
 .application-navbar {
   background-color: $white;
+  min-width: $min-width-application-topbar;
   height: 82px;
   position: relative;
 
@@ -17,5 +18,9 @@
     padding-left: 5%;
     color: $greyish-brown;
     padding-bottom: 5px;
+  }
+
+  a {
+    text-decoration: none;
   }
 }

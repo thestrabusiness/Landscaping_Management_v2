@@ -16,3 +16,13 @@
     overflow: visible;
   }
 }
+
+@mixin vertically-centered-text($height) {
+  height: $height;
+  line-height: $height;
+}
+
+@mixin container-text-padding {
+  padding-left: 30px;
+  padding-right: 30px;
+}

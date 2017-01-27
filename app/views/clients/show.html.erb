@@ -7,10 +7,10 @@
         Client Information
         <%= link_to '+', edit_client_path %>
       </div>
-
-      <%= render 'detail', header: 'Client Name', content: @client.full_name, css_class: 'name' %>
-      <%= render 'detail', header: 'Balance', content: number_to_currency(@client.balance), css_class: 'balance' %>
-      #OUTSTANDING INVOICES
+        <div class='details-subsection'>
+          <%= render 'detail', header: 'Client Name', content: @client.full_name, css_class: 'name' %>
+          <%= render 'detail', header: 'Balance', content: number_to_currency(@client.balance), css_class: 'balance' %>
+        </div>
     </div>
 
     <div class='billing-address-container'>
@@ -26,15 +26,13 @@
       </div>
     </div>
     <div class='job-addresses-container'>
-      <div class='details-section-header'>
-        <% @addresses.each do |address| %>
-          <%= render 'job_addresses', address: address %>
-        <% end %>
-      </div>
+      <% @addresses.each do |address| %>
+        <%= render 'job_addresses', address: address %>
+      <% end %>
     </div>
   </div>
   <div class='client-right-container'>
-    <% @address.each do |address| %>
+    <% @addresses.each do |address| %>
       <%= render 'address_services', address: address, services: address.service_prices %>
     <% end %>
   </div>
