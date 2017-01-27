@@ -1,0 +1,18 @@
+@mixin vertically-centered {
+  // parent must be relatively positioned
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin overflow-text {
+  line-height: normal;
+  padding-top: ($row-height / 2) - ($base-font-size / 2);
+  overflow: hidden;
+  word-wrap: break-word;
+  -ms-overflow-style: auto;
+
+  &:hover {
+    overflow: visible;
+  }
+}

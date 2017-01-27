@@ -22,6 +22,8 @@ gem 'unicorn'
 gem 'simple_form'
 gem 'thor', '0.19.1'
 gem 'time_for_a_boolean', git: 'https://github.com/calebthompson/time_for_a_boolean.git'
+gem 'neat'
+gem 'bourbon'
 
 
 group :development, :test do

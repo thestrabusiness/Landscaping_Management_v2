@@ -1,0 +1,21 @@
+.application-topbar{
+  height: $row-height;
+  background-color: $base-green;
+  position: relative;
+  min-width: $min-width-all-clients;
+}
+
+.logout {
+  @include vertically-centered;
+
+  font-size: $medium-font-size;
+  margin-left: 100px;
+}
+
+.application-topbar-title {
+  @include vertically-centered;
+
+  color: $white;
+  font-size: $large-font-size;
+  left: 50%;
+}

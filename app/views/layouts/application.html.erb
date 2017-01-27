@@ -8,7 +8,9 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style='background-color: #f8f8f8;'>
+    <%= render 'shared/application_topbar' %>
+    <%= render 'shared/application_navbar' %>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,21 @@
+.application-navbar {
+  background-color: $white;
+  height: 82px;
+  position: relative;
+
+  .clients-link,
+  .invoices-link,
+  .services-link,
+  .payments-link,
+  .estimates-link {
+    @include span-columns(2 of 10);
+
+    display: inline-block;
+    font-size: 22px;
+    margin-top: 13.5px;
+    text-align: center;
+    padding-left: 5%;
+    color: $greyish-brown;
+    padding-bottom: 5px;
+  }
+}
