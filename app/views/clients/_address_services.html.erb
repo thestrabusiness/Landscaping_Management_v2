@@ -4,26 +4,26 @@
   </div>
 
   <div class='table-row-headers'>
-    <div class='cell header name'>
+    <div class='cell header service-name'>
       Service
     </div>
 
-    <div class='cell header price'>
+    <div class='cell header service-price'>
       Price
     </div>
 
-    <div class='cell header blank'>
+    <div class='cell header service-blank'>
     </div>
 
   </div>
 
   <div class='table-rows service'>
     <% services.each do |service| %>
-      <div class='cell name'>
+      <div class='cell service-name'>
         <%= service.name %>
       </div>
 
-      <div class='cell price'>
+      <div class='cell service-price'>
         <%= service.price %>
       </div>
 

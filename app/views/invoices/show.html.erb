@@ -1,0 +1,9 @@
+<div class='invoice-page-container'>
+    <div class='invoice-details-container'>
+      <%= render 'shared/detail', header: 'Client', content:@invoice.client.full_name, css_class: 'Client'  %>
+      <%= render 'shared/detail', header: 'Job Date', content: @invoice.job_date, css_class: 'invoice-date'  %>
+      <%= render 'shared/detail', header: 'Performed By', content: @invoice.performed_by, css_class: 'invoice-performed'  %>
+      <%= render 'shared/detail', header: 'Status', content: @invoice.status, css_class: 'invoice-status'  %>
+      <%= render 'shared/detail', header: 'Notes', content: @invoice.notes, css_class: 'invoice-notes'  %>
+    </div>
+</div>

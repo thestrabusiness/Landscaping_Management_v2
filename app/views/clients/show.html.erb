@@ -8,8 +8,8 @@
         <%= link_to '+', edit_client_path %>
       </div>
         <div class='details-subsection'>
-          <%= render 'detail', header: 'Client Name', content: @client.full_name, css_class: 'name' %>
-          <%= render 'detail', header: 'Balance', content: number_to_currency(@client.balance), css_class: 'balance' %>
+          <%= render 'shared/detail', header: 'Client Name', content: @client.full_name, css_class: 'client-name' %>
+          <%= render 'shared/detail', header: 'Balance', content: number_to_currency(@client.balance), css_class: 'client-balance' %>
         </div>
     </div>
 
@@ -19,10 +19,10 @@
         <%= link_to '+', edit_address_path(@billing_address) %>
       </div>
       <div class='details-subsection'>
-      <%= render 'detail', header: 'Street', content: @billing_address.street, css_class: 'street' %>
-      <%= render 'detail', header: 'City', content: @billing_address.city, css_class: 'city' %>
-      <%= render 'detail', header: 'State', content: @billing_address.state, css_class: 'state' %>
-      <%= render 'detail', header: 'Zip', content: @billing_address.zip, css_class: 'zip' %>
+      <%= render 'shared/detail', header: 'Street', content: @billing_address.street, css_class: 'street' %>
+      <%= render 'shared/detail', header: 'City', content: @billing_address.city, css_class: 'city' %>
+      <%= render 'shared/detail', header: 'State', content: @billing_address.state, css_class: 'state' %>
+      <%= render 'shared/detail', header: 'Zip', content: @billing_address.zip, css_class: 'zip' %>
       </div>
     </div>
     <div class='job-addresses-container'>

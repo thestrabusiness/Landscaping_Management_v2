@@ -6,7 +6,7 @@ class ClientsController < ApplicationController
   def show
     set_client
     @billing_address = @client.billing_address
-    @addresses = @client.addresses
+    @addresses = Address.where(client: @client)
     @invoices = @client.invoices
     @payments = @client.payments
   end
@@ -45,7 +45,7 @@ class ClientsController < ApplicationController
   end
 
   def destroy
-    @client = Client.find(params[:id])
+    set_client
     @client.deleted = true
     @client.save
   end

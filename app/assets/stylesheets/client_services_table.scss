@@ -50,10 +50,10 @@
   border-bottom: 1px solid $light-grey;
 }
 
-.name {
+.service-name {
   @include span-columns(5);
 }
 
-.price {
+.service-price {
   @include span-columns(2);
 }

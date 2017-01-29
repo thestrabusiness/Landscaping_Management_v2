@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170126213759) do
+ActiveRecord::Schema.define(version: 20170128174852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 20170126213759) do
     t.string   "phone_number"
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
-    t.uuid     "billing_address_id"
     t.datetime "deleted_at"
+    t.integer  "billing_address_id"
     t.index ["billing_address_id"], name: "index_clients_on_billing_address_id", using: :btree
     t.index ["id"], name: "index_clients_on_id", using: :btree
   end
@@ -52,15 +52,19 @@ ActiveRecord::Schema.define(version: 20170126213759) do
 
   create_table "invoices", force: :cascade do |t|
     t.integer  "client_id"
-    t.money    "total",        scale: 2
+    t.money    "total",              scale: 2
     t.datetime "job_date"
     t.string   "performed_by"
     t.string   "notes"
     t.string   "status"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.datetime "deleted_at"
+    t.integer  "billing_address_id"
+    t.integer  "job_address_id"
+    t.index ["billing_address_id"], name: "index_invoices_on_billing_address_id", using: :btree
     t.index ["client_id"], name: "index_invoices_on_client_id", using: :btree
+    t.index ["job_address_id"], name: "index_invoices_on_job_address_id", using: :btree
   end
 
   create_table "payments", force: :cascade do |t|

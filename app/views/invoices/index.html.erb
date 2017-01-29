@@ -1,0 +1,49 @@
+<p id='notice'><%= notice %></p>
+
+<div class='invoice-list'>
+  <div class='invoice-count-header'>
+    <div class='invoice-count'>
+      <%= @invoices.count %> <%= 'Invoice'.pluralize(@invoices.count) %>
+    </div>
+  </div>
+
+  <div class='invoice-list-header'>
+    <div class='invoice-list-header-item invoice-date'>
+      Date
+    </div>
+    <div class='invoice-list-header-item invoice-client'>
+      Client
+    </div>
+    <div class='invoice-list-header-item invoice-job-address'>
+      Job Address
+    </div>
+    <div class='invoice-list-header-item invoice-status'>
+      Status
+    </div>
+    <div class='invoice-list-header-item invoice-total'>
+      Total
+    </div>
+  </div>
+
+  <% @invoices.each do |invoice| %>
+      <%= link_to invoice_path(invoice), class: 'invoice'  do %>
+          <div class='invoice-list'>
+            <div class='invoice-list-item invoice-date'>
+              <%= invoice.job_date %>
+            </div>
+            <div class='invoice-list-item invoice-client'>
+              <%= invoice.client.full_name %>
+            </div>
+            <div class='invoice-list-item invoice-job-address'>
+              <%= invoice.job.full_address %>
+            </div>
+            <div class='invoice-list-item invoice-status'>
+              <%= invoice.status %>
+            </div>
+            <div class='invoice-list-item invoice-total'>
+              <%= invoice.total %>
+            </div>
+          </div>
+      <% end %>
+  <% end %>
+</div>
