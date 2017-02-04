@@ -7,6 +7,7 @@ class InvoicesController < ApplicationController
     set_invoice
     @client = @invoice.client
     @job_address = @invoice.job_address
+    @invoice_items = InvoiceItem.where(invoice: @invoice)
   end
 
   def new

@@ -71,13 +71,6 @@
   }
 }
 
-.invoice-list-header {
-  background-color: $white;
-  color: $warm-grey;
-  font-size: $base-font-size;
-  height: 53px;
-}
-
 .add-invoice-button {
   @include position(fixed, null 55px 55px null);
 

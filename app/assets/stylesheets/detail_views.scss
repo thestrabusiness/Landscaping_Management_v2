@@ -5,7 +5,8 @@
   min-width: $min-width-all-clients;
 }
 
-.client-left-container {
+.client-left-container,
+.invoice-details-container{
   @include span-columns(4);
 }
 
@@ -15,7 +16,8 @@
 
 .client-details-container,
 .billing-address-container,
-.job-addresses-container {
+.job-addresses-container,
+.invoice-details-container{
   background-color: $white;
   margin-bottom: 20px;
 }

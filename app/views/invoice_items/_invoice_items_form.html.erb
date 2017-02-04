@@ -1,0 +1,7 @@
+<%= simple_form_for [@invoice, @invoice_item] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :price, as: :decimal %>
+    <%= f.input :quantity, as: :integer %>
+
+    <%= f.button :submit %>
+<% end %>
