@@ -6,20 +6,24 @@
 }
 
 .client-left-container,
-.invoice-details-container{
+.invoice-details-container {
   @include span-columns(4);
 }
 
-.client-right-container {
+.client-right-container,
+.invoice-top-right-container {
   @include span-columns(8);
 }
 
 .client-details-container,
 .billing-address-container,
-.job-addresses-container,
-.invoice-details-container{
+.job-addresses-container {
   background-color: $white;
   margin-bottom: 20px;
+}
+
+.invoice-details-container {
+  margin-left: 20px;
 }
 
 .details-section-header {
@@ -55,4 +59,61 @@
   @include container-text-padding;
   @include overflow-text;
   padding-top: ($detail-content-height / 2) - ($base-font-size / 2);
+}
+
+.invoice-items-list {
+  display: block;
+
+  &:nth-child(even) {
+    background-color: $white;
+  }
+
+  &:nth-child(odd) {
+    background-color: $off-white;
+  }
+}
+
+.item-name,
+.item-price,
+.item-quantity,
+.item-total {
+  @include span-columns(2 of 10)
+}
+
+.item-buttons {
+  @include span-columns(1 of 10)
+}
+
+.invoice-items-list-header {
+  background-color: $white;
+  color: $warm-grey;
+  font-size: $base-font-size;
+  height: 53px;
+}
+
+.invoice-buttons-container,
+.invoice-bottom-container {
+  position: relative;
+  clear: both;
+  padding-top: 15px;
+}
+
+.invoice-bottom-container {
+  height: 60px;
+
+  .left-buttons {
+    position: absolute;
+    width: 50%;
+    float: left;
+    bottom: 0;
+    padding-bottom: 5px;
+
+    a {
+      display: inline;
+    }
+  }
+}
+.new-invoice-item-button,
+.invoice-total {
+  float: right !important;
 }

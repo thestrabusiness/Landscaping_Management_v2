@@ -1,55 +1,57 @@
-<%= render 'invoice_details_topbar' %>
-
 <div class='invoice-page-container'>
   <div class='invoice-details-container'>
-    <div class='details-section-header'>
-      Invoice Details
-    </div>
-    <div class='details-subsection'>
-      <%= render 'shared/detail', header: 'Client', content:@invoice.client.full_name, css_class: 'Client'  %>
-      <%= render 'shared/detail', header: 'Job Date', content: @invoice.job_date, css_class: 'invoice-date'  %>
-      <%= render 'shared/detail', header: 'Performed By', content: @invoice.performed_by, css_class: 'invoice-performed'  %>
-      <%= render 'shared/detail', header: 'Status', content: @invoice.status, css_class: 'invoice-status'  %>
-      <%= render 'shared/detail', header: 'Notes', content: @invoice.notes, css_class: 'invoice-notes'  %>
+    <%= render 'invoice_details' %>
+  </div>
+  <div class='invoice-top-right-container'></div>
+  <div class='table-row-headers'>
+      <div class='cell header item-name'>
+        Service
+      </div>
+      <div class='cell header item-price'>
+        Price
+      </div>
+      <div class='cell header item-quantity'>
+        Quantity
+      </div>
+      <div class='cell header item-total'>
+        Total
+      </div>
+      <div class='cell header item-buttons'>
+
+      </div>
+
+      <% @invoice_items.each do |item| %>
+        <div class='table-rows invoice-item'>
+          <div class='cell item-name'>
+            <%= item.name %>
+          </div>
+          <div class='cell item-price'>
+            <%= item.price %>
+          </div>
+          <div class='cell item-quantity'>
+            <%= item.quantity %>
+          </div>
+          <div class='cell item-total'>
+            <%= number_to_currency(item.total) %>
+          </div>
+          <div class='cell item-buttons'>
+            <%= link_to 'Delete', [@invoice, item], method: :delete,  data: { confirm: "Are you sure you want to delete this item?" } %>
+          </div>
+        </div>
+      <% end %>
+  </div>
+  <div class='invoice-buttons-container'>
+    <div class='new-invoice-item-button'>
+      <%= link_to 'Add New Item', new_invoice_invoice_item_path(@invoice) %>
     </div>
   </div>
-  <div class='invoice-items-list-header'>
-    <div class='item-list-header-item item-name'>
-      Service
+  <div class='invoice-bottom-container'>
+    <div class='left-buttons'>
+        <%= link_to 'Edit Invoice Details', edit_invoice_path(@invoice) %> |
+        <%= link_to 'Generate PDF'%> |
     </div>
-    <div class='item-list-header-item item-price'>
-      Price
-    </div>
-    <div class='item-list-header-item item-quantity'>
-      Quantity
-    </div>
-    <div class='item-list-header-item item-total'>
-      Total
-    </div>
-    <div class='item-list-header-item item-buttons'>
-
+    <div class='invoice-total'>
+      <h3>Invoice Total: <%= number_to_currency(@invoice.total) %></h3>
     </div>
   </div>
-
-  <% @invoice_items.each do |item| %>
-    <div class='invoice-items-list'>
-      <div class='item-list-item item-name'>
-        <%= item.name %>
-      </div>
-      <div class='item-list-item item-price'>
-        <%= item.price %>
-      </div>
-      <div class='item-list-item item-quantity'>
-        <%= item.quantity %>
-      </div>
-      <div class='item-list-item item-quantity'>
-        <%= number_to_currency(item.total) %>
-      </div>
-      <div class='item-list-item item-buttons'>
-        <%= link_to 'Delete', [@invoice, item], method: :delete,  data: { confirm: "Are you sure you want to delete this item?" } %>
-      </div>
-    </div>
-  <% end %>
-
-  <%= link_to 'Add New Item', new_invoice_invoice_item_path(@invoice) %>
 </div>

@@ -29,7 +29,7 @@
       <%= link_to invoice_path(invoice), class: 'invoice'  do %>
           <div class='invoice-list'>
             <div class='invoice-list-item invoice-date'>
-              <%= invoice.job_date %>
+              <%= invoice.job_date.strftime('%m/%d/%y') %>
             </div>
             <div class='invoice-list-item invoice-client'>
               <%= invoice.client.full_name %>

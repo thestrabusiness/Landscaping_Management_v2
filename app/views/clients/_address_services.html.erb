@@ -19,6 +19,7 @@
 
   <div class='table-rows service'>
     <% services.each do |service| %>
+      <div>
       <div class='cell service-name'>
         <%= service.name %>
       </div>
@@ -27,8 +28,9 @@
         <%= service.price %>
       </div>
 
-      <div class='cell buttons'>
+      <div class='cell service-buttons'>
         some buttons here?
+      </div>
       </div>
     <% end %>
   </div>
