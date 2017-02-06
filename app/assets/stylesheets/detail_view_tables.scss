@@ -9,11 +9,11 @@
   height: $row-height;
 
   &:nth-child(even) {
-    background-color: $off-white;
+    background-color: $white;
   }
 
   &:nth-child(odd) {
-    background-color: $white;
+    background-color: $off-white;
   }
 }
 
@@ -21,6 +21,10 @@
   height: $row-height;
   background-color: $white;
   clear: both;
+}
+
+.row {
+  height: $row-height;
 }
 
 .cell {

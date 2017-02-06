@@ -19,3 +19,31 @@
   font-size: $large-font-size;
   left: 50%;
 }
+
+.details-topbar {
+  margin-bottom: 20px;
+}
+
+.details-topbar,
+.invoice-details-topbar {
+  min-width: $min-width-application-topbar;
+  background-color: $white;
+  color: $dark-gray;
+  height: $row-height;
+  position: relative;
+}
+
+.topbar-label {
+  @include vertically-centered;
+  font-size: $large-font-size;
+  left: 50%;
+}
+
+.back {
+  @include vertically-centered;
+  float: left;
+  top: 50%;
+  color: $base-font-color;
+  font-size: $large-font-size;
+  margin-left: 90px;
+}

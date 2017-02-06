@@ -1,7 +1,6 @@
-<div class='details-topbar'>
-  <%= link_to 'Back', invoices_path %>
-</div>
-
-<div class='topbar-name'>
-  Invoice #<%= @invoice.id %>
+<div class='invoice-details-topbar'>
+  <%= link_to "Back to #{@originating_page.title}", @originating_page.path, class: 'back' %>
+  <div class='topbar-label'>
+    Invoice #<%= @invoice.id %>
+  </div>
 </div>

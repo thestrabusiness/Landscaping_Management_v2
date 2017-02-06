@@ -1,7 +1,7 @@
 <div class='details-topbar'>
-  <%= link_to 'Back', clients_path %>
+  <%= link_to "Back to #{@originating_page.title}", @originating_page.path, class: 'back' %>
+  <div class='topbar-label'>
+    <%= @client.full_name %>
+  </div>
 </div>
 
-<div class='topbar-name'>
-  <%= @client.full_name %>
-</div>

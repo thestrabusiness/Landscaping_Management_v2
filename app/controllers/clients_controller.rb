@@ -5,6 +5,7 @@ class ClientsController < ApplicationController
 
   def show
     set_client
+    @originating_page = OriginatingPage.new(session[:originating_path] || clients_path)
     @billing_address = @client.billing_address
     @addresses = Address.where(client: @client)
     @invoices = @client.invoices

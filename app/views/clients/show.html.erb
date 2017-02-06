@@ -16,7 +16,7 @@
     <div class='billing-address-container'>
       <div class='details-section-header'>
         Billing Address
-        <%= link_to '+', edit_address_path(@billing_address) %>
+        <%= link_to '+', edit_client_address_path(@billing_address) %>
       </div>
       <div class='details-subsection'>
       <%= render 'shared/detail', header: 'Street', content: @billing_address.street, css_class: 'street' %>
@@ -30,7 +30,12 @@
         <%= render 'job_addresses', address: address %>
       <% end %>
     </div>
+
+    <%= link_to new_client_address_path(@client), class: 'details-button' do %>
+      Add New Address
+    <% end %>
   </div>
+
   <div class='client-right-container'>
     <% @addresses.each do |address| %>
       <%= render 'address_services', address: address, services: address.service_prices %>

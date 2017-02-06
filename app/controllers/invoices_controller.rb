@@ -4,7 +4,10 @@ class InvoicesController < ApplicationController
   end
 
   def show
+    @originating_page = OriginatingPage.new(session[:originating_path] || invoices_path)
+
     set_invoice
+
     @client = @invoice.client
     @job_address = @invoice.job_address
     @invoice_items = InvoiceItem.where(invoice: @invoice)

@@ -26,13 +26,31 @@
   margin-left: 20px;
 }
 
-.details-section-header {
+.details-section-header,
+.details-button {
   @include vertically-centered-text($header-height);
   @include container-text-padding;
 
   background-color: $base-green;
   color: $white;
   font-size: $medium-large-font-size;
+}
+
+.details-section-header {
+  a {
+    float: right;
+    font-size: 36px;
+  }
+}
+
+
+.details-button {
+  display: block;
+
+  &:hover {
+    color: $white;
+    opacity: 0.8;
+  }
 }
 
 .details-subsection-header {
