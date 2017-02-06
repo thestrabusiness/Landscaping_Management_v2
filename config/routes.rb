@@ -3,10 +3,10 @@ Rails.application.routes.draw do
     resources :addresses, only: [:new, :create, :edit, :update]
     resources :invoices, only: [:new, :create]
   end
-  resources :addresses, only: [:index] do
+  resources :addresses, only: [] do
     resources :service_prices, except: [:index, :show]
   end
-  resources :invoices, except: [:create] do
+  resources :invoices, except: [:new, :create] do
     resources :invoice_items, except: [:index, :show]
   end
   resources :services
