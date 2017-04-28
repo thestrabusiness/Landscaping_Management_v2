@@ -1,0 +1,34 @@
+<%= render 'shared/application_navbar' %>
+<p id='notice'><%= notice %></p>
+
+<div class='service-list'>
+  <div class='service-count-header'>
+    <div class='service-count'>
+      <%= @services.count %> <%= 'Service'.pluralize(@services.count) %>
+    </div>
+  </div>
+
+  <div class='service-list-header'>
+    <div class='service-list-header-item service-name'>
+      Name
+    </div>
+  </div>
+
+  <% @services.each do |service| %>
+    <div class='service'>
+      <div class='service-list'>
+        <div class='service-list-item service-name'>
+          <%= service.name %>
+        </div>
+        <div class='service-list-item delete-service'>
+          <%= link_to 'Delete',
+                      service_path(service),
+                      method: :delete,
+                      data: {confirm: 'Are you sure you want to delete this service?'} %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to '+', new_service_path, class: 'add-client-button' %>

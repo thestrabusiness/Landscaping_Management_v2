@@ -11,7 +11,7 @@ class ServicesController < ApplicationController
     @service = Service.new(service_params)
 
     if @service.save
-      render :index, notice: 'Service added!'
+      redirect_to services_path, notice: 'Service added!'
     else
       render :new, notice: "Service couldn't be added"
     end
@@ -21,9 +21,9 @@ class ServicesController < ApplicationController
     @service = Service.find(params[:id])
 
     if @service.destroy
-      render :index, notice: "#{@service.name} was removed!"
+      redirect_to services_path, notice: "#{@service.name} was removed!"
     else
-      render :index, notice: "Service couldn't be removed!"
+      redirect_to services_path, notice: "Service couldn't be removed!"
     end
   end
 

@@ -25,20 +25,20 @@
 
   <% @clients.each do |client| %>
     <%= link_to client_path(client), class: 'client'  do %>
-    <div class='client-list'>
-      <div class='client-list-item first-name'>
-        <%= client.first_name %>
+      <div class='client-list'>
+        <div class='client-list-item first-name'>
+          <%= client.first_name %>
+        </div>
+        <div class='client-list-item last-name'>
+          <%= client.last_name %>
+        </div>
+        <div class='client-list-item address'>
+          <%= client.full_billing_address %>
+        </div>
+        <div class='client-list-item balance'>
+          <%= client.balance %>
+        </div>
       </div>
-      <div class='client-list-item last-name'>
-        <%= client.last_name %>
-      </div>
-      <div class='client-list-item address'>
-        <%= client.full_billing_address %>
-      </div>
-      <div class='client-list-item balance'>
-        <%= client.balance %>
-      </div>
-    </div>
     <% end %>
   <% end %>
 </div>

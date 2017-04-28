@@ -1,5 +1,5 @@
 <%= simple_form_for [@address, @service_price] do |f| %>
-    <%= f.input :name %>
+    <%= f.input :name, collection: Service.all, label_method: :name, value_method: :name %>
     <%= f.input :price, as: :decimal %>
     <%= f.submit %>
 <% end %>
