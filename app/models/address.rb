@@ -14,4 +14,8 @@ class Address < ApplicationRecord
         zip
     ].join(' ')
   end
+
+  def self.autocomplete_source
+    order(:client_id).map{ |address| { label: address.full_address, id: address.id }}
+  end
 end

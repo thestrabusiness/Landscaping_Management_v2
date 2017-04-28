@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :service_prices, except: [:index, :show]
   end
 
-  resources :invoices, except: [:new, :create] do
+  resources :invoices do
     resources :invoice_items, except: [:index, :show, :edit]
   end
 

@@ -15,15 +15,12 @@ class InvoicesController < ApplicationController
 
   def new
     @invoice = Invoice.new
-    @client = Client.find(params[:client_id])
   end
 
   def create
     @invoice = Invoice.new(invoice_params)
-    @invoice.client = Client.find(params[:client_id])
     @invoice.job_address = Address.find(invoice_params[:job_address_id])
-    @invoice.total = 0
-    @invoice.status = 'PENDING'
+    @invoice.client = @invoice.job_address.client
 
     if @invoice.save!
       redirect_to invoice_path(@invoice), notice: 'The invoice was successfully saved!'
