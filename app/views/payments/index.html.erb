@@ -1,0 +1,46 @@
+<%= render 'shared/application_navbar' %>
+<p id='notice'><%= notice %></p>
+
+<div class='payment-list'>
+  <div class='payment-count-header'>
+    <div class='payment-count'>
+      <%= @payments.count %> <%= 'Payment'.pluralize(@payments.count) %>
+    </div>
+  </div>
+
+  <div class='payment-list-header'>
+    <div class='payment-list-header-item payment-client'>
+      Client
+    </div>
+    <div class='payment-list-header-item payment-invoice'>
+      Invoice ID
+    </div>
+    <div class='payment-list-header-item payment-type'>
+      Type
+    </div>
+    <div class='payment-list-header-item payment-amount'>
+      Amount
+    </div>
+  </div>
+
+  <% @payments.each do |payment| %>
+      <%= link_to payment_path(payment), class: 'payment'  do %>
+          <div class='payment-list'>
+            <div class='payment-list-item payment-client'>
+              <%= payment.client.full_name %>
+            </div>
+            <div class='payment-list-item payment-invoice'>
+              <%= payment.invoice.id %>
+            </div>
+            <div class='payment-list-item payment-type'>
+              <%= payment.payment_type %>
+            </div>
+            <div class='payment-list-item payment-amount'>
+              <%= payment.amount %>
+            </div>
+          </div>
+      <% end %>
+  <% end %>
+</div>
+
+<%= link_to 'Add New Payment', new_payment_path, class: 'add-payment-button' %>

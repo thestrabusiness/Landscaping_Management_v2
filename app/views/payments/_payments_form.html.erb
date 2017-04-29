@@ -1,0 +1,6 @@
+<%= simple_form_for @payment do |f| %>
+  <%= f.input :client %>
+  <%= f.input :invoice %>
+  <%= f.input :amount, as: :decimal %>
+  <%= f.input :payment_type %>
+<% end %>

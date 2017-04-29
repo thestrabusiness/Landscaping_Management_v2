@@ -11,7 +11,7 @@ class ServicesController < ApplicationController
       redirect_to services_path, notice: 'Service added!'
     else
       @new_service = @service
-      render :new, notice: "Service couldn't be added"
+      render :index, notice: "Service couldn't be added"
     end
   end
 
