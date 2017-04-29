@@ -24,6 +24,7 @@ gem 'thor', '0.19.1'
 gem 'time_for_a_boolean', git: 'https://github.com/calebthompson/time_for_a_boolean.git'
 gem 'neat'
 gem 'bourbon'
+gem 'acts_as_list'
 
 
 group :development, :test do

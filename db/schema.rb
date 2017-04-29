@@ -21,10 +21,10 @@ ActiveRecord::Schema.define(version: 20170429170115) do
     t.string   "city"
     t.string   "state"
     t.string   "zip"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.integer  "job_order"
-    t.boolean  "job_address", default: true
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "position"
+    t.boolean  "is_job_address?", default: true
     t.index ["client_id"], name: "index_addresses_on_client_id", using: :btree
   end
 
