@@ -27,6 +27,5 @@ class Client < ApplicationRecord
         billing_address.zip
     ].join(' ')
   end
-
 end
 
