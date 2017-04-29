@@ -10,7 +10,7 @@ class InvoiceItemsController < ApplicationController
     @invoice_item.invoice = @invoice
 
 
-    if @invoice_item.save!
+    if @invoice_item.save && add_total_to_client_and_invoice
       redirect_to invoice_path(@invoice), notice: 'The item was successfully added to the invoice!'
     else
       flash.now[:notice] = 'The invoice item could not be saved!'
@@ -22,7 +22,7 @@ class InvoiceItemsController < ApplicationController
     set_invoice_item
     @invoice = @invoice_item.invoice
 
-    if @invoice_item.destroy
+    if @invoice_item.destroy && subtract_total_from_client_and_invoice
       notice = 'Item was successfully removed from the invoice!'
     else
       notice = 'There was a problem removing the item from the invoice!'
@@ -35,6 +35,22 @@ class InvoiceItemsController < ApplicationController
 
   def set_invoice_item
     @invoice_item = InvoiceItem.find(params[:id])
+  end
+
+  def add_total_to_client_and_invoice
+    ActiveRecord::Base.transaction do
+      @invoice.total += @invoice_item.total
+      @invoice.client.balance += @invoice_item.total
+      @invoice.save && @invoice.client.save
+    end
+  end
+
+  def subtract_total_from_client_and_invoice
+    ActiveRecord::Base.transaction do
+      @invoice.total -= @invoice_item.total
+      @invoice.client.balance -= @invoice_item.total
+      @invoice.save && @invoice.client.save
+    end
   end
 
   def invoice_item_params

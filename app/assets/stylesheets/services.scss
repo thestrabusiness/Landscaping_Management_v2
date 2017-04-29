@@ -35,11 +35,11 @@ body {
   padding-bottom: 30px;
 }
 
-.service-count-header {
+.service-header {
   background-color: $base-green;
   height: 86px;
 
-  .service-count {
+  .service-header-title {
     @include position(relative, 29px null null 30px);
 
     color: $white;

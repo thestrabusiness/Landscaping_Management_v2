@@ -45,8 +45,7 @@ class InvoicesController < ApplicationController
 
   def destroy
     set_invoice
-    @invoice.deleted = true
-    @invoice.save
+    @invoice.update(deleted:  true)
   end
 
   private
@@ -64,8 +63,6 @@ class InvoicesController < ApplicationController
                                     :performed_by,
                                     :job_date,
                                     :status,
-                                    :client_id,
-                                    :billing_address_id,
                                     :job_address_id,
                                     :notes)
   end
