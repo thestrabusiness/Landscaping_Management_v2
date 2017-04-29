@@ -2,11 +2,6 @@ body {
   font-family: $base-font;
 }
 
-.services-page-title{
-  font-size: 22px;
-  margin-top: 27px;
-}
-
 .service-list {
   @include position(relative, 20px null null null);
   @include span-columns(8);
@@ -34,6 +29,10 @@ body {
   .service-name {
     padding-left: 30px;
   }
+}
+
+.service-form-container {
+  padding-bottom: 30px;
 }
 
 .service-count-header {
@@ -64,6 +63,15 @@ body {
 .service {
   color: $base-font-color;
   height: $row-height;
+  display: block;
+
+  &:nth-child(even) {
+    background-color: $white;
+  }
+
+  &:nth-child(odd) {
+    background-color: $off-white;
+  }
 
   &:hover {
     color: $tomato;
@@ -74,14 +82,15 @@ body {
   }
 }
 
-.service {
-  display: block;
-
-  &:nth-child(even) {
-    background-color: $white;
-  }
-
-  &:nth-child(odd) {
-    background-color: $off-white;
-  }
+#service_name {
+  @include span-columns(5);
+  padding: 10px;
+  margin: 30px;
 }
+
+.service-submit-container {
+ @include span-columns(5);
+  padding: 35px;
+}
+
+

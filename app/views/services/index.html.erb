@@ -1,6 +1,20 @@
 <%= render 'shared/application_navbar' %>
 <p id='notice'><%= notice %></p>
 
+<div class='service-list service-form-container'>
+  <div class='service-count-header'>
+    <div class='service-count'>
+      Add New Service
+    </div>
+  </div>
+  <%= simple_form_for @new_service do |f| %>
+      <%= f.input :name, label: false %>
+      <div class='service-submit-container'>
+        <%= f.submit id: 'service-submit' %>
+      </div>
+  <% end %>
+</div>
+
 <div class='service-list'>
   <div class='service-count-header'>
     <div class='service-count'>
@@ -30,5 +44,3 @@
     </div>
   <% end %>
 </div>
-
-<%= link_to '+', new_service_path, class: 'add-client-button' %>

@@ -1,10 +1,7 @@
 class ServicesController < ApplicationController
   def index
+    @new_service = Service.new
     @services = Service.all
-  end
-
-  def new
-    @service = Service.new
   end
 
   def create
@@ -13,6 +10,7 @@ class ServicesController < ApplicationController
     if @service.save
       redirect_to services_path, notice: 'Service added!'
     else
+      @new_service = @service
       render :new, notice: "Service couldn't be added"
     end
   end
@@ -23,7 +21,7 @@ class ServicesController < ApplicationController
     if @service.destroy
       redirect_to services_path, notice: "#{@service.name} was removed!"
     else
-      redirect_to services_path, notice: "Service couldn't be removed!"
+      redirect_to services_path, notice: "#{@service.name} couldn't be removed!"
     end
   end
 
