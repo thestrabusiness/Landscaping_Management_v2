@@ -15,8 +15,19 @@ class Client < ApplicationRecord
     where(deleted_at: nil)
   end
 
+  def self.search(query)
+    joins(:addresses).
+        where("first_name ilike :query or
+              last_name ilike :query or
+              addresses.street ilike :query or
+              addresses.city ilike :query or
+              addresses.zip ilike :query or
+              concat_ws(' ',first_name, last_name) ilike :query",
+                           query: "%#{query}%")
+  end
+
   def full_name
-    [first_name, last_name].each{ |x| x.strip!}.join(' ')
+    [first_name, last_name].each(&:strip!).join(' ')
   end
 
   def full_billing_address
