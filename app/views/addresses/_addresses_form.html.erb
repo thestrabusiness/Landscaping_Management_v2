@@ -3,7 +3,7 @@
     <%= f.input :city %>
     <%= f.input :state %>
     <%= f.input :zip %>
-    <%= f.input :job_address, label: 'Do you perform work at this address?' %>
-    <%= f.input :job_order %>
-    <%= f.button :submit %>
+    <%= f.input :is_job_address?, label: 'Do you perform work at this address?' %>
+    <%= f.input :position, label: 'Job Order'  %>
+    <%= f.button :submit%>
 <% end %>
