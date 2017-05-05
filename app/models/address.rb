@@ -9,7 +9,7 @@ class Address < ApplicationRecord
   before_create :assign_position, if: Proc.new { |address| address.is_job_address? }
 
   #acts_as_list gem takes care of ordering job order
-  acts_as_list add_new_at: :nil
+  acts_as_list #add_new_at: :nil
 
   def self.job_addresses
     where(billing_address: false)
