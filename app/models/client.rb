@@ -26,8 +26,16 @@ class Client < ApplicationRecord
                            query: "%#{query}%")
   end
 
+  def self.autocomplete_source
+    all.map{ |client| { label: client.summary, id: client.id }}
+  end
+
+  def summary
+    [full_name, full_billing_address].join(' - ')
+  end
+
   def full_name
-    [first_name, last_name].each(&:strip!).join(' ')
+    [first_name, last_name].join(' ')
   end
 
   def full_billing_address

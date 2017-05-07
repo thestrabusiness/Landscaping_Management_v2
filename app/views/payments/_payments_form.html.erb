@@ -1,6 +1,14 @@
 <%= simple_form_for @payment do |f| %>
-  <%= f.input :client %>
-  <%= f.input :invoice %>
+
+  <%= f.input :client, as: :string, input_html: {data: { autocomplete_source: Client.autocomplete_source }} %>
+  <%= f.hidden_field :client_id %>
+
+  <%= f.input :invoice, as: :string, input_html: {data: { autocomplete_source: Invoice.autocomplete_source }} %>
+  <%= f.hidden_field :invoice_id %>
+
   <%= f.input :amount, as: :decimal %>
+
   <%= f.input :payment_type %>
+
+  <%= f.submit %>
 <% end %>

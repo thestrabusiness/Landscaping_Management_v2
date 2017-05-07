@@ -56,6 +56,11 @@ class PaymentsController < ApplicationController
       @payment.client.balance -= @payment.amount
       @payment.client.save
     end
+
+    return true
+
+  rescue ActiveRecord::Rollback
+    return false
   end
 
   def add_payment_amount_to_client_balance
@@ -63,6 +68,11 @@ class PaymentsController < ApplicationController
       @payment.client.balance += @payment.amount
       @payment.client.save
     end
+
+    return true
+
+  rescue ActiveRecord::Rollback
+    return false
   end
 
   def update_client_balance_with_payment_amount_difference
@@ -70,6 +80,11 @@ class PaymentsController < ApplicationController
       @payment.client.balance -= @payment.amount_difference
       @payment.client.save
     end
+
+    return true
+
+  rescue ActiveRecord::Rollback
+    return false
   end
 
   def set_payment

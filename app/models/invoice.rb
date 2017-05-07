@@ -9,6 +9,18 @@ class Invoice < ApplicationRecord
   # validates :total, :performed_by, :job_date, presence: true
   validates :client, presence: true
 
+  def self.autocomplete_source
+    order(:client_id).map{ |invoice| { label: invoice.summary, id: invoice.id }}
+  end
+
+  def summary
+    [
+        client.full_name,
+        job_address.street,
+        total
+    ].join(' - ')
+  end
+
   def job
     job_address
   end
