@@ -1,6 +1,7 @@
 class ClientsController < ApplicationController
   def index
-    @clients = Client.all
+    @query = params[:query]
+    @clients = Client.search(@query)
   end
 
   def show
@@ -61,7 +62,7 @@ class ClientsController < ApplicationController
   end
 
   def client_params
-    params.require(:client).permit(:first_name, :last_name, :phone_number, :email, :billing_address_id)
+    params.require(:client).permit(:first_name, :last_name, :phone_number, :email, :billing_address_id, :search)
   end
 
   def address_params

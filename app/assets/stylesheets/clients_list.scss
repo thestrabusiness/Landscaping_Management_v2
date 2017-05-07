@@ -69,7 +69,13 @@ body {
 
     color: $white;
     font-size: $medium-large-font-size;
+    width: 50%;
   }
+}
+
+.client-search-form {
+  float: right;
+  margin-right: 30px;
 }
 
 .client-list-header {

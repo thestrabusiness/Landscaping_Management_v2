@@ -6,6 +6,12 @@
     <div class='client-count'>
       <%= @clients.count %> <%= 'Client'.pluralize(@clients.count) %>
     </div>
+    <div class='client-search-form'>
+      <%= form_tag(clients_path, method: :get) do %>
+          <%= text_field_tag :query, params[:query] %>
+          <%= submit_tag 'Search', name: nil %>
+      <% end %>
+    </div>
   </div>
 
   <div class='client-list-header'>
