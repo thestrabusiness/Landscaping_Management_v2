@@ -2,6 +2,8 @@ class InvoiceItemsController < ApplicationController
   def new
     @invoice_item = InvoiceItem.new
     @invoice = Invoice.find(params[:invoice_id])
+
+    collect_invoice_client_prices
   end
 
   def create
@@ -9,10 +11,17 @@ class InvoiceItemsController < ApplicationController
     @invoice = Invoice.find(params[:invoice_id])
     @invoice_item.invoice = @invoice
 
+    if params[:other_service_name].present? && params[:new_price].present?
+      @invoice_item.name = params[:other_service_name].titleize
+      @invoice_item.price = params[:new_price]
+    else
+      @invoice_item.price = ServicePrice.find_by(name: @invoice_item.name, client: @invoice.client).price
+    end
 
     if @invoice_item.save && add_total_to_client_and_invoice
       redirect_to invoice_path(@invoice), notice: 'The item was successfully added to the invoice!'
     else
+      collect_invoice_client_prices
       flash.now[:notice] = 'The invoice item could not be saved!'
       render :new
     end
@@ -43,6 +52,11 @@ class InvoiceItemsController < ApplicationController
       @invoice.client.balance += @invoice_item.total
       @invoice.save && @invoice.client.save
     end
+
+    return true
+
+  rescue ActiveRecord::Rollback
+    return false
   end
 
   def subtract_total_from_client_and_invoice
@@ -51,10 +65,22 @@ class InvoiceItemsController < ApplicationController
       @invoice.client.balance -= @invoice_item.total
       @invoice.save && @invoice.client.save
     end
+
+    return true
+
+  rescue ActiveRecord::Rollback
+    return false
+  end
+
+  def collect_invoice_client_prices
+    client_prices = @invoice.client.service_prices
+
+    @options = client_prices.collect {|p| p.name } + ['Other']
   end
 
   def invoice_item_params
     params.require(:invoice_item).permit(:id,
+                                         :invoice_id,
                                          :name,
                                          :price,
                                          :quantity)

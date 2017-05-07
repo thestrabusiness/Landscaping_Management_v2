@@ -1,7 +1,21 @@
 <%= simple_form_for [@invoice, @invoice_item] do |f| %>
-    <%= f.input :name %>
-    <%= f.input :price, as: :decimal %>
+    <%= f.input :name, as: :select, collection: @options %>
+
+    <div id="other_text_box" class="control-group">
+      <div class="controls">
+        <%= label_tag :other_service %><br>
+        <%= text_field_tag :other_service_name %>
+      </div>
+    </div>
+
+    <div id="other_price_box" class="field">
+      <%= label_tag :price %><br>
+      <%= number_field_tag :new_price %>
+    </div>
+
     <%= f.input :quantity, as: :integer %>
 
     <%= f.button :submit %>
 <% end %>
+
+
