@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170505002139) do
+ActiveRecord::Schema.define(version: 20170508000442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,26 @@ ActiveRecord::Schema.define(version: 20170505002139) do
     t.integer  "old_id"
     t.index ["billing_address_id"], name: "index_clients_on_billing_address_id", using: :btree
     t.index ["id"], name: "index_clients_on_id", using: :btree
+  end
+
+  create_table "estimates", force: :cascade do |t|
+    t.datetime "date"
+    t.money    "total",      scale: 2
+    t.string   "notes"
+    t.integer  "address_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["address_id"], name: "index_estimates_on_address_id", using: :btree
+  end
+
+  create_table "estimates_items", force: :cascade do |t|
+    t.string   "description"
+    t.money    "price",       scale: 2
+    t.integer  "quantity"
+    t.integer  "estimate_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["estimate_id"], name: "index_estimates_items_on_estimate_id", using: :btree
   end
 
   create_table "invoice_items", force: :cascade do |t|

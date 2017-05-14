@@ -1,0 +1,52 @@
+<%= render 'shared/application_navbar' %>
+<p id='notice'><%= notice %></p>
+
+<div class='estimate-list'>
+  <div class='estimate-count-header'>
+    <div class='estimate-count'>
+      <%= @estimates.count %> <%= 'Estimate'.pluralize(@estimates.count) %>
+    </div>
+    <div class='estimate-search-form'>
+      <%= form_tag(estimates_path, method: :get) do %>
+          <%= text_field_tag :query, params[:query] %>
+          <%= submit_tag 'Search', name: nil %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class='estimate-list-header'>
+    <div class='estimate-list-header-item first-name'>
+      First Name
+    </div>
+    <div class='estimate-list-header-item last-name'>
+      Last Name
+    </div>
+    <div class='estimate-list-header-item address'>
+      Address
+    </div>
+    <div class='estimate-list-header-item balance'>
+      Balance
+    </div>
+  </div>
+
+  <% @estimates.each do |estimate| %>
+      <%= link_to estimate_path(estimate), class: 'estimate'  do %>
+          <div class='estimate-list'>
+            <div class='estimate-list-item first-name'>
+              <%= estimate.first_name %>
+            </div>
+            <div class='estimate-list-item last-name'>
+              <%= estimate.last_name %>
+            </div>
+            <div class='estimate-list-item address'>
+              <%= estimate.full_billing_address %>
+            </div>
+            <div class='estimate-list-item balance'>
+              <%= estimate.balance %>
+            </div>
+          </div>
+      <% end %>
+  <% end %>
+</div>
+
+<%= link_to 'Add New Estimate', new_estimate_path, class: 'add-estimate-button' %>
