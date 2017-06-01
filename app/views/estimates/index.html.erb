@@ -6,12 +6,6 @@
     <div class='estimate-count'>
       <%= @estimates.count %> <%= 'Estimate'.pluralize(@estimates.count) %>
     </div>
-    <div class='estimate-search-form'>
-      <%= form_tag(estimates_path, method: :get) do %>
-          <%= text_field_tag :query, params[:query] %>
-          <%= submit_tag 'Search', name: nil %>
-      <% end %>
-    </div>
   </div>
 
   <div class='estimate-list-header'>
