@@ -33,7 +33,7 @@
       <%= link_to estimate_path(estimate), class: 'estimate'  do %>
           <div class='estimate-list'>
             <div class='estimate-list-item estimate-date'>
-              <%= estimate.created_at.strftime('%m/%d/%y') %>
+              <%= estimate.date.strftime('%m/%d/%y') %>
             </div>
             <div class='estimate-list-item estimate-client'>
               <%= estimate.client.full_name %>
