@@ -1,0 +1,71 @@
+<%= render 'shared/detail_topbar', content: "Estimate #{@estimate.id}" %>
+<p id='notice'><%= notice %></p>
+
+<div class='estimate-page-container'>
+  <div class='estimate-details-container'>
+    <p>
+      <strong>Client:</strong>
+      <%= @estimate.client.full_name %>
+    </p>
+    <p>
+      <strong>Address:</strong>
+      <%= @estimate.address.full_address %>
+    </p>
+    <p>
+      <strong>Date:</strong>
+      <%= @estimate.date.strftime("%m/%d/%y") %>
+    </p>
+  </div>
+  <div class='estimate-top-right-container'></div>
+  <div class='table-row-headers'>
+    <div class='cell header item-name'>
+      Service
+    </div>
+    <div class='cell header item-price'>
+      Price
+    </div>
+    <div class='cell header item-quantity'>
+      Quantity
+    </div>
+    <div class='cell header item-total'>
+      Total
+    </div>
+    <div class='cell header item-buttons'>
+
+    </div>
+
+    <% @estimate_items.each do |item| %>
+        <div class='table-rows estimate-item'>
+          <div class='cell item-name'>
+            <%= item.description %>
+          </div>
+          <div class='cell item-price'>
+            <%= item.price %>
+          </div>
+          <div class='cell item-quantity'>
+            <%= item.quantity %>
+          </div>
+          <div class='cell item-total'>
+            <%= number_to_currency(item.total) %>
+          </div>
+          <div class='cell item-buttons'>
+            <%= link_to 'Delete', [@estimate, item], method: :delete,  data: { confirm: "Are you sure you want to delete this item?" } %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+  <div class='estimate-buttons-container'>
+    <div class='new-estimate-item-button'>
+      <%= link_to 'Add New Item', new_estimate_estimate_item_path(@estimate) %>
+    </div>
+  </div>
+  <div class='estimate-bottom-container'>
+    <div class='left-buttons'>
+      <%= link_to 'Edit Estimate Details', edit_estimate_path(@estimate) %> |
+      <%= link_to 'Generate PDF'%> |
+    </div>
+    <div class='estimate-total'>
+      <h3>Estimate Total: <%= number_to_currency(@estimate.total) %></h3>
+    </div>
+  </div>
+</div>

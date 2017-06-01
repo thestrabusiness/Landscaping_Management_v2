@@ -33,10 +33,8 @@ group :development, :test do
   gem 'awesome_print'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'byebug', platform: :mri
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
-  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-rails'
 end
@@ -44,7 +42,6 @@ end
 group :test do
   gem 'capybara'
   gem 'capybara-webkit'
-  gem 'capybara-rails'
   gem 'climate_control'
   gem 'database_cleaner'
   gem 'shoulda-matchers'

@@ -1,0 +1,8 @@
+<%= simple_form_for [@estimate, @estimate_item] do |f| %>
+    <%= f.input :description %>
+    <%= f.input :price, as: :decimal %>
+    <%= f.input :quantity, as: :integer %>
+    <%= f.button :submit %>
+<% end %>
+
+

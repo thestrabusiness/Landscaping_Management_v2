@@ -110,13 +110,16 @@
 }
 
 .invoice-buttons-container,
-.invoice-bottom-container {
+.invoice-bottom-container,
+.estimate-bottom-container,
+.estimate-buttons-container {
   position: relative;
   clear: both;
   padding-top: 15px;
 }
 
-.invoice-bottom-container {
+.invoice-bottom-container,
+.estimate-bottom-container{
   height: 60px;
 
   .left-buttons {
@@ -132,6 +135,7 @@
   }
 }
 .new-invoice-item-button,
-.invoice-total {
+.invoice-total,
+.estimate-total {
   float: right !important;
 }
