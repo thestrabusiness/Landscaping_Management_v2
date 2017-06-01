@@ -15,34 +15,34 @@
   </div>
 
   <div class='estimate-list-header'>
-    <div class='estimate-list-header-item first-name'>
-      First Name
+    <div class='estimate-list-header-item estimate-date'>
+      Date
     </div>
-    <div class='estimate-list-header-item last-name'>
-      Last Name
+    <div class='estimate-list-header-item estimate-client'>
+      Client
     </div>
-    <div class='estimate-list-header-item address'>
-      Address
+    <div class='estimate-list-header-item estimate-job-address'>
+      Job Address
     </div>
-    <div class='estimate-list-header-item balance'>
-      Balance
+    <div class='estimate-list-header-item estimate-total'>
+      Total
     </div>
   </div>
 
   <% @estimates.each do |estimate| %>
       <%= link_to estimate_path(estimate), class: 'estimate'  do %>
           <div class='estimate-list'>
-            <div class='estimate-list-item first-name'>
-              <%= estimate.first_name %>
+            <div class='estimate-list-item estimate-date'>
+              <%= estimate.created_at.strftime('%m/%d/%y') %>
             </div>
-            <div class='estimate-list-item last-name'>
-              <%= estimate.last_name %>
+            <div class='estimate-list-item estimate-client'>
+              <%= estimate.client.full_name %>
             </div>
-            <div class='estimate-list-item address'>
-              <%= estimate.full_billing_address %>
+            <div class='estimate-list-item estimate-job-address'>
+              <%= estimate.address.full_address %>
             </div>
-            <div class='estimate-list-item balance'>
-              <%= estimate.balance %>
+            <div class='estimate-list-item estimate-total'>
+              <%= estimate.total %>
             </div>
           </div>
       <% end %>

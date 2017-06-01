@@ -9,7 +9,7 @@ class EstimatesController < ApplicationController
     set_estimate
 
     @client = @estimate.client
-    @job_address = @estimate.job_address
+    @address = @estimate.address
     @estimate_items = EstimateItem.where(estimate: @estimate)
   end
 
@@ -19,8 +19,7 @@ class EstimatesController < ApplicationController
 
   def create
     @estimate = Estimate.new(estimate_params)
-    @estimate.job_address = Address.find(estimate_params[:job_address_id])
-    @estimate.client = @estimate.job_address.client
+    @estimate.address = Address.find(estimate_params[:address_id])
 
     if @estimate.save
       redirect_to estimate_path(@estimate), notice: 'The estimate was successfully saved!'
@@ -35,8 +34,10 @@ class EstimatesController < ApplicationController
   end
 
   def update
+    set_estimate
+
     if @estimate.update(estimate_params)
-      redirect_to client_path(@client), notice: 'The estimate was successfully updated!'
+      redirect_to estimate_path(@estimate), notice: 'The estimate was successfully updated!'
     else
       flash.now[:notice] = 'The estimate could not be updated!'
       render :edit
@@ -58,13 +59,7 @@ class EstimatesController < ApplicationController
   end
 
   def estimate_params
-    params.require(:estimate).permit(:id,
-                                     :total,
-                                     :performed_by,
-                                     :job_date,
-                                     :status,
-                                     :job_address_id,
-                                     :notes)
+    params.require(:estimate).permit(:id, :address_id, :notes)
   end
 
 end

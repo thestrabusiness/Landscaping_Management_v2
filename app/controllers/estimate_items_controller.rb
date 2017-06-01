@@ -63,7 +63,7 @@ class EstimateItemsController < ApplicationController
   def estimate_item_params
     params.require(:estimate_item).permit(:id,
                                          :estimate_id,
-                                         :name,
+                                         :description,
                                          :price,
                                          :quantity)
   end
