@@ -49,6 +49,18 @@ class EstimatesController < ApplicationController
     @estimate.update(deleted:  true)
   end
 
+  def download_pdf
+    set_estimate
+    pdf = EstimatePDFGenerator.generate(@estimate.id)
+    send_data(pdf, filename: "#{@estimate.client.underscore_name}_estimate#{@estimate.id}.pdf")
+  end
+
+  def download_pdf_collection
+    estimate_ids = params[:selected_estimates]
+    pdf = EstimatePDFGenerator.generate(estimate_ids)
+    send_data(pdf, filename: "estimates_#{Date.today.strftime('%m_%d_%Y')}.pdf")
+  end
+
   private
 
   def set_estimate

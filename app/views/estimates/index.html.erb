@@ -8,39 +8,53 @@
     </div>
   </div>
 
-  <div class='estimate-list-header'>
-    <div class='estimate-list-header-item estimate-date'>
-      Date
+  <%= form_tag download_pdf_collection_estimates_path, method: :get do %>
+    <div class='estimate-list-header'>
+      <div class='estimate-list-header-item checkbox'>
+        <input type="checkbox" id="selectAll" value="selectAll">
+      </div>
+      <div class='estimate-list-header-item estimate-date'>
+        Date
+      </div>
+      <div class='estimate-list-header-item estimate-client'>
+        Client
+      </div>
+      <div class='estimate-list-header-item estimate-job-address'>
+        Job Address
+      </div>
+      <div class='estimate-list-header-item estimate-total'>
+        Total
+      </div>
     </div>
-    <div class='estimate-list-header-item estimate-client'>
-      Client
-    </div>
-    <div class='estimate-list-header-item estimate-job-address'>
-      Job Address
-    </div>
-    <div class='estimate-list-header-item estimate-total'>
-      Total
-    </div>
-  </div>
 
-  <% @estimates.each do |estimate| %>
-      <%= link_to estimate_path(estimate), class: 'estimate'  do %>
-          <div class='estimate-list'>
-            <div class='estimate-list-item estimate-date'>
-              <%= estimate.date.strftime('%m/%d/%y') %>
+      <% @estimates.each do |estimate| %>
+        <%= link_to estimate_path(estimate), class: 'estimate'  do %>
+            <div class='estimate-list'>
+              <div class='estimate-list-item checkbox'>
+                <%= check_box_tag "selected_estimates[]", estimate.id %>
+              </div>
+              <div class='estimate-list-item estimate-date'>
+                <%= estimate.date.strftime('%m/%d/%y') %>
+              </div>
+              <div class='estimate-list-item estimate-client'>
+                <%= estimate.client.full_name %>
+              </div>
+              <div class='estimate-list-item estimate-job-address'>
+                <%= estimate.address.full_address %>
+              </div>
+              <div class='estimate-list-item estimate-total'>
+                <%= estimate.total %>
+              </div>
             </div>
-            <div class='estimate-list-item estimate-client'>
-              <%= estimate.client.full_name %>
-            </div>
-            <div class='estimate-list-item estimate-job-address'>
-              <%= estimate.address.full_address %>
-            </div>
-            <div class='estimate-list-item estimate-total'>
-              <%= estimate.total %>
-            </div>
-          </div>
-      <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class='estimate-bottom-container l-shift'>
+        <div class='left-buttons'>
+          <a href='#' id='jsGeneratePDFEstimates'>Download selected estimates as PDF</a>
+        </div>
+      </div>
   <% end %>
-</div>
 
 <%= link_to 'Add New Estimate', new_estimate_path, class: 'add-estimate-button' %>

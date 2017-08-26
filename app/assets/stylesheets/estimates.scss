@@ -21,7 +21,7 @@
   }
 
   .estimate-list-header-item.estimate-job-address {
-    @include span-columns(8 of 16)
+    @include span-columns(7.5 of 16)
   }
 
   .estimate-list-header-item.estimate-total{
@@ -40,12 +40,23 @@
   }
 
   .estimate-list-item.estimate-job-address {
-    @include span-columns(8 of 16)
+    @include span-columns(7.5 of 16)
   }
 
   .estimate-list-item.estimate-total{
     @include span-columns(2 of 16)
   }
+
+  .estimate-list-item.checkbox,
+  .estimate-list-header-item.checkbox {
+    @include span-columns(.25 of 16);
+    margin-right: 0;
+  }
+
+  .estimate-list-header-item.checkbox {
+    padding-left: 8px;
+  }
+
 
   .estimate-date,
   .estimate-client,

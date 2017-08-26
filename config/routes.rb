@@ -26,6 +26,14 @@ Rails.application.routes.draw do
 
   resources :estimates do
     resources :estimate_items, except: [:index, :show, :edit]
+
+    member do
+      get :download_pdf
+    end
+
+    collection do
+      get :download_pdf_collection
+    end
   end
 
   resources :payments

@@ -1,5 +1,6 @@
 $(document).on('turbolinks:load', function () {
     initPaymentEstimateAutocomplete();
+    initEstimateFormSubmitter();
 });
 
 function initPaymentEstimateAutocomplete () {
@@ -9,5 +10,11 @@ function initPaymentEstimateAutocomplete () {
             $("#estimate_address").val(ui.item.label);
             $("#estimate_address_id").val(ui.item.id);
         }
+    })
+}
+
+function initEstimateFormSubmitter() {
+    $('#jsGeneratePDFEstimates').click(function () {
+        $('form').submit()
     })
 }

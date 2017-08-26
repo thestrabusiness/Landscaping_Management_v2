@@ -62,7 +62,7 @@
   <div class='estimate-bottom-container'>
     <div class='left-buttons'>
       <%= link_to 'Edit Estimate Details', edit_estimate_path(@estimate) %> |
-      <%= link_to 'Generate PDF'%> |
+      <%= link_to 'Download as PDF', download_pdf_estimate_path %> |
     </div>
     <div class='estimate-total'>
       <h3>Estimate Total: <%= number_to_currency(@estimate.total) %></h3>
