@@ -24,4 +24,26 @@ class Invoice < ApplicationRecord
   def job
     job_address
   end
+
+  def check_balance_forward
+    if client.balance == 0
+      'zero-balance'
+    elsif client.balance - total < 0
+      'payment-received'
+    else
+      'positive-balance'
+    end
+  end
+
+  def balance_forward
+    if client.balance == 0
+      0
+    else
+      (client.balance - total)
+    end
+  end
+
+  def amount_due
+    total + balance_forward
+  end
 end

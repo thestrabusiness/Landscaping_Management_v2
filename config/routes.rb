@@ -11,6 +11,15 @@ Rails.application.routes.draw do
 
   resources :invoices do
     resources :invoice_items, except: [:index, :show, :edit]
+
+    member do
+      get :download_pdf
+    end
+
+    collection do
+      get :download_pdf_collection
+      get :download_labels
+    end
   end
 
   resources :services, except: [:edit, :update]

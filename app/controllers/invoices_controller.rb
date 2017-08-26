@@ -5,9 +5,7 @@ class InvoicesController < ApplicationController
 
   def show
     @originating_page = OriginatingPage.new(session[:originating_path] || invoices_path)
-
     set_invoice
-
     @client = @invoice.client
     @job_address = @invoice.job_address
     @invoice_items = InvoiceItem.where(invoice: @invoice)
@@ -48,6 +46,23 @@ class InvoicesController < ApplicationController
     @invoice.update(deleted:  true)
   end
 
+  def download_labels
+    @invoices = Invoice.where(id: params[:selected_invoices])
+    render :labels, layout: 'labels'
+  end
+
+  def download_pdf
+    set_invoice
+    pdf = InvoicePDFGenerator.generate(@invoice.id)
+    send_data(pdf, filename: "#{@invoice.client.underscore_name}_invoice#{@invoice.id}.pdf")
+  end
+
+  def download_pdf_collection
+    invoice_ids = params[:selected_invoices]
+    pdf = InvoicePDFGenerator.generate(invoice_ids)
+    send_data(pdf, filename: "invoices_#{Date.today.strftime('%m_%d_%Y')}.pdf")
+  end
+
   private
 
   def set_invoice
@@ -66,5 +81,4 @@ class InvoicesController < ApplicationController
                                     :job_address_id,
                                     :notes)
   end
-
 end

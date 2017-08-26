@@ -2,6 +2,8 @@ $(document).on('turbolinks:load', function () {
     initInvoiceAddressAutocomplete();
     hideOtherServiceTextBoxes();
     toggleOtherServiceTextBoxes();
+    initInvoiceSelectBoxes();
+    initInvoiceFormSubmitter();
 });
 
 function initInvoiceAddressAutocomplete () {
@@ -36,4 +38,31 @@ function toggleOtherServiceTextBoxes() {
             $('.invoice_item_price').show();
         }
     }).trigger('change');
+}
+
+function initInvoiceSelectBoxes() {
+    $('#selectAll').click(function() {
+        if (this.checked) {
+            $(':checkbox').each(function() {
+                this.checked = true;
+            });
+        } else {
+            $(':checkbox').each(function() {
+                this.checked = false;
+            });
+        }
+    });
+}
+
+function initInvoiceFormSubmitter() {
+    form = $('form');
+    $('#jsGeneratePDFInvoices').click(function(){
+        form.attr('action', 'invoices/download_pdf_collection');
+        form.submit();
+    });
+
+    $('#jsGenerateLabels').click(function() {
+        form.attr('action', 'invoices/download_labels');
+        form.submit();
+    })
 }

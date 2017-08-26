@@ -46,5 +46,15 @@ class Client < ApplicationRecord
         billing_address.zip
     ].join(' ')
   end
+
+  def underscore_name
+    [first_name, last_name].join('_').downcase
+  end
+
+  def last_payment
+    payment = Payment.where(:client_id => id).scoping { Payment.last }
+
+    payment.present? ? payment.amount : nil
+  end
 end
 

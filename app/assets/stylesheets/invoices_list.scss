@@ -33,7 +33,18 @@
     height: $row-height;
   }
 
-  .invoice-list-item.invoice-date,
+  .invoice-list-item.checkbox,
+  .invoice-list-header-item.checkbox {
+    @include span-columns(.25 of 16);
+    margin-right: 0;
+  }
+
+  .invoice-list-header-item.checkbox {
+    padding-left: 8px;
+  }
+
+
+    .invoice-list-item.invoice-date,
   .invoice-list-item.invoice-client,
   .invoice-list-item.invoice-status{
     @include span-columns(3 of 16)
@@ -83,7 +94,6 @@
 
   display: block;
 }
-
 .invoice {
   color: $base-font-color;
   height: $row-height;
@@ -107,4 +117,8 @@
   &:nth-child(odd) {
     background-color: $off-white;
   }
+}
+
+.l-shift {
+  @include shift(0.75)
 }
