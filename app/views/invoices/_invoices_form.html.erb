@@ -1,7 +1,12 @@
 <%= simple_form_for [@invoice] do |f| %>
     <%= f.input :job_date, as: :date %>
     <%= f.input :performed_by %>
-    <%= f.input :job_address, as: :string, input_html: {data: { autocomplete_source: Address.autocomplete_source }} %>
+    <%= f.input :job_address,
+                as: :string,
+                input_html: {
+                    value: @invoice.job_address&.full_address,
+                    data: { autocomplete_source: Address.autocomplete_source }
+                } %>
     <%= f.hidden_field :job_address_id %>
 
     <%= f.button :submit %>

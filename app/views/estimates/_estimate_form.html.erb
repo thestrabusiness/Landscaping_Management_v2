@@ -1,6 +1,11 @@
 <%= simple_form_for [@estimate] do |f| %>
     <%= f.input :date, as: :date %>
-    <%= f.input :address, as: :string, input_html: {data: { autocomplete_source: Address.autocomplete_source }} %>
+    <%= f.input :address,
+                as: :string,
+                input_html: {
+                    value: @estimate.address&.full_address,
+                    data: { autocomplete_source: Address.autocomplete_source }
+                } %>
     <%= f.hidden_field :address_id %>
 
     <%= f.button :submit %>

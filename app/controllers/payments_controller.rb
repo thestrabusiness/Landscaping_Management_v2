@@ -4,6 +4,7 @@ class PaymentsController < ApplicationController
   end
 
   def show
+    @originating_page = OriginatingPage.new(session[:originating_path] || payments_path)
     set_payment
   end
 
