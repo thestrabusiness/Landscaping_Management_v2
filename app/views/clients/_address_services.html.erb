@@ -1,4 +1,4 @@
-<div class='client-address-services-container'>
+<div class='address-services'>
   <div class='details-section-header'>
     <%= address.street %> Services
     <%= link_to '+', new_address_service_price_path(address) %>
@@ -15,10 +15,9 @@
 
     <div class='cell header service-blank'>
     </div>
-
   </div>
 
-  <div class='table-rows service'>
+  <div class='table-rows services'>
     <% services.each do |service| %>
       <div class='service'>
         <div class='cell service-name'>

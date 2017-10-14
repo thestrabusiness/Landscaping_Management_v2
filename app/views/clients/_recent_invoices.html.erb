@@ -1,0 +1,47 @@
+<div class='recent-invoices-container'>
+  <div class='details-section-header'>
+    Recent Invoices
+  </div>
+  <div class='table-row-headers'>
+    <div class='cell header recent-item-number'>
+      Invoice #
+    </div>
+
+    <div class='cell header recent-item-date'>
+      Job Date
+    </div>
+
+    <div class='cell header recent-item-address'>
+      Job Address
+    </div>
+
+    <div class='cell header recent-item-total'>
+      Total
+    </div>
+  </div>
+
+  <% if @client.recent_invoices.any? %>
+    <% @client.recent_invoices.each do |invoice| %>
+        <%= link_to invoice_path(invoice) do %>
+            <div class='recent-item'>
+              <div class='cell recent-item-number'>
+                <%= invoice.id %>
+              </div>
+              <div class='cell recent-item-date'>
+                <%= invoice.job_date.strftime('%m/%d/%y') %>
+              </div>
+              <div class='cell recent-item-address'>
+                <%= invoice.job_address.full_address %>
+              </div>
+              <div class='cell recent-item-total'>
+                <%= number_to_currency(invoice.total) %>
+              </div>
+            </div>
+        <% end %>
+    <% end %>
+  <% else %>
+    <div class='message'>
+      <span class='no-recent-message'> No Recent Invoices </span>
+    </div>
+  <% end %>
+</div>

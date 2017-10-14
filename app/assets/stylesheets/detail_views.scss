@@ -1,16 +1,26 @@
 .client-page-container {
-  @include span-columns(10);
+  @include span-columns(12);
   @include shift(0.5);
 
   min-width: $min-width-all-clients;
 }
 
-.client-left-container,
+.client-left-container {
+  @include span-columns(2 of 12)
+}
+
+.client-middle-container {
+  @include span-columns(5 of 12)
+}
+
+.client-right-container {
+  @include span-columns(4 of 12)
+}
+
 .invoice-details-container {
   @include span-columns(4);
 }
 
-.client-right-container,
 .invoice-top-right-container {
   @include span-columns(8);
 }

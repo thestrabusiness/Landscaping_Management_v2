@@ -4,9 +4,10 @@
 }
 
 .invoice-list {
-  @include position(relative, 20px null null null);
+  @include position(relative, 15px null null null);
   @include span-columns(8);
-  @include shift(.50);
+  float: none;
+  margin: 0 auto;
 
   min-width: $min-width-all-clients;
 
