@@ -1,7 +1,7 @@
 class ClientsController < ApplicationController
   def index
     @query = params[:query]
-    @clients = Client.preload(:addresses).search(@query)
+    @clients = Client.preload(:addresses).search(@query).uniq
   end
 
   def show

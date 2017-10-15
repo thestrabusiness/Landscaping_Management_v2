@@ -30,7 +30,7 @@
   }
 
   .invoice-list-item {
-    @include position(relative, 5px 40px null null);
+    @include position(relative, 15px -8px null null);
     height: $row-height;
   }
 

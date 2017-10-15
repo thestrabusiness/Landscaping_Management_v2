@@ -38,4 +38,8 @@ class Address < ApplicationRecord
     ].join(' ')
   end
 
+  def street_city
+    "#{street} - #{city}"
+  end
+
 end

@@ -1,7 +1,8 @@
 .payment-list {
-  @include position(relative, 20px null null null);
+  @include position(relative, 15px null null null);
   @include span-columns(8);
-  @include shift(.50);
+  float: none;
+  margin: 0 auto;
 
   min-width: $min-width-all-clients;
 
@@ -20,7 +21,7 @@
   }
 
   .payment-list-item {
-    @include position(relative, 5px 40px null null);
+    @include position(relative, 15px null null null);
     height: $row-height;
   }
 

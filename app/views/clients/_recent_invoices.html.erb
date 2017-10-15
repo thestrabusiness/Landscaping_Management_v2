@@ -31,7 +31,7 @@
                 <%= invoice.job_date.strftime('%m/%d/%y') %>
               </div>
               <div class='cell recent-item-address'>
-                <%= invoice.job_address.full_address %>
+                <%= invoice.job_address.street_city %>
               </div>
               <div class='cell recent-item-total'>
                 <%= number_to_currency(invoice.total) %>
