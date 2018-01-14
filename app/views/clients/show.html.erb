@@ -30,13 +30,17 @@
     <div class='vertical-nav-section'>
       <div class='nav-title-bar'>
         <span class='nav-title'>Addresses</span>
-        <div class='nav-button'>Edit</div>
+        <div class='nav-button'>
+          <%= link_to 'Add', new_client_address_path(@client) %>
+        </div>
       </div>
       <div class='vertical-nav-links'>
-        <div class='vertical-nav-link'> All Addresses </div>
         <% @addresses.each do |address| %>
           <div class='vertical-nav-link address'>
             <%= address.street %>
+            <div class='nav-button'>
+              <%= link_to 'Edit', edit_client_address_path(@client, address) %>
+            </div>
           </div>
         <% end %>
       </div>
