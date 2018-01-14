@@ -1,0 +1,38 @@
+<div class='client-detail-section estimates hidden'>
+  <div class='client-detail-header'>
+    <div class='client-detail-title'>
+      <span>Estimate History</span>
+    </div>
+    <div class='client-detail-search'>
+      <%= text_field_tag(:search, 'Search') %>
+    </div>
+    <hr class='section-break'>
+    <div class='client-detail estimate-count'>
+      <div class='label'>
+        Number of Estimates
+      </div>
+      <span>
+        <%= @client.estimates.count %>
+      </span>
+    </div>
+    <div class='client-detail balance'>
+      <div class='label'>
+        Balance
+      </div>
+      <span>
+        <%= @client.balance %>
+      </span>
+    </div>
+  </div>
+  <div class='client-detail-list'>
+    <div class='full-size-list estimates'>
+      <div class='list-title'>
+        Estimates
+      </div>
+      <div class='details-list'>
+        <%= render @estimates.present? ? 'estimates_table' : 'no_records_message',
+                   klass: 'estimate', estimates: @estimates %>
+      </div>
+    </div>
+  </div>
+</div>

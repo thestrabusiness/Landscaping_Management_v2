@@ -30,38 +30,38 @@
       </div>
     </div>
 
-    <% @invoices.each do |invoice| %>
+    <div class='invoices'>
+      <% @invoices.each do |invoice| %>
         <%= link_to invoice_path(invoice), class: 'invoice'  do %>
-          <div class='invoice-list'>
-            <div class='invoice-list-item checkbox'>
-              <%= check_box_tag "selected_invoices[]", invoice.id %>
-            </div>
-            <div class='invoice-list-item invoice-date'>
-              <%= invoice.job_date.strftime('%m/%d/%y') %>
-            </div>
-            <div class='invoice-list-item invoice-client'>
-              <%= invoice.client.full_name %>
-            </div>
-            <div class='invoice-list-item invoice-job-address'>
-              <%= invoice.job.full_address %>
-            </div>
-            <div class='invoice-list-item invoice-status'>
-              <%= invoice.status %>
-            </div>
-            <div class='invoice-list-item invoice-total'>
-              <%= invoice.total %>
-            </div>
+          <div class='invoice-list-item checkbox'>
+            <%= check_box_tag "selected_invoices[]", invoice.id %>
+          </div>
+          <div class='invoice-list-item invoice-date'>
+            <%= invoice.job_date.strftime('%m/%d/%y') %>
+          </div>
+          <div class='invoice-list-item invoice-client'>
+            <%= invoice.client.full_name %>
+          </div>
+          <div class='invoice-list-item invoice-job-address'>
+            <%= invoice.job.full_address %>
+          </div>
+          <div class='invoice-list-item invoice-status'>
+            <%= invoice.status %>
+          </div>
+          <div class='invoice-list-item invoice-total'>
+            <%= invoice.total %>
           </div>
         <% end %>
       <% end %>
     </div>
+</div>
 
-    <div class='invoice-bottom-container l-shift'>
-      <div class='left-buttons'>
-        <a href='#' id='jsGeneratePDFInvoices'>Download PDF Invoices</a> |
-        <a href='#' id='jsGenerateLabels'>Download Labels</a>
-      </div>
+  <div class='invoice-bottom-container l-shift'>
+    <div class='left-buttons'>
+      <a href='#' id='jsGeneratePDFInvoices'>Download PDF Invoices</a> |
+      <a href='#' id='jsGenerateLabels'>Download Labels</a>
     </div>
-  <% end %>
+  </div>
+<% end %>
 
 <%= link_to 'Add New Invoice', new_invoice_path, class: 'add-invoice-button' %>

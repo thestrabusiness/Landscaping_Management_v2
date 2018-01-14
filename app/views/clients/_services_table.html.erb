@@ -1,0 +1,12 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+  </tr>
+  <% services.each do |service| %>
+    <tr>
+      <th><%= service.name %></th>
+      <th><%= number_to_currency service.price %></th>
+    </tr>
+  <% end %>
+</table>

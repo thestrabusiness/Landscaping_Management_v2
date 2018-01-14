@@ -3,6 +3,7 @@ class Client < ApplicationRecord
   has_many :invoices
   has_many :payments
   has_many :addresses
+  has_many :estimates, through: :addresses
   belongs_to :billing_address, class_name: 'Address'
 
   accepts_nested_attributes_for :addresses
@@ -51,8 +52,16 @@ class Client < ApplicationRecord
     [first_name, last_name].join('_').downcase
   end
 
+  def recent_invoices(limit = 5)
+    invoices.order(created_at: :desc).limit(limit)
+  end
+
+  def recent_payments(limit = 5)
+    payments.order(created_at: :desc).limit(limit)
+  end
+
   def last_payment
-    payment = Payment.where(:client_id => id).scoping { Payment.last }
+    payment = Payment.where(client_id: id).scoping { Payment.last }
 
     payment.present? ? payment.amount : nil
   end

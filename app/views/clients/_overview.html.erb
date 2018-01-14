@@ -1,0 +1,48 @@
+<div class='client-detail-section overview'>
+  <div class='client-detail-header'>
+    <div class='client-detail-title'>
+      <span>Overview</span>
+    </div>
+    <div class='client-detail-search'>
+      <%= text_field_tag(:search, 'Search') %>
+    </div>
+    <hr class='section-break'>
+    <div class='client-detail billing-address'>
+      <div class='label'>
+        Billing Address
+      </div>
+      <span>
+        <%= @billing_address.full_address %>
+      </span>
+    </div>
+    <div class='client-detail balance'>
+      <div class='label'>
+        Balance
+      </div>
+      <span>
+        <%= @client.balance %>
+      </span>
+    </div>
+  </div>
+  <div class='client-detail-list'>
+    <div class='half-height-list invoices'>
+      <div class='list-title'>
+        Recent Invoices
+      </div>
+      <div class='details-list'>
+        <%= render @invoices.present? ? 'invoices_table' : 'no_records_message',
+                   klass: 'invoice', invoices: @recent_invoices %>
+      </div>
+    </div>
+    <div class='half-height-list payments'>
+      <div class='list-title'>
+        Recent Payments
+      </div>
+      <div class='details-list'>
+        <%= render @payments.present? ? 'payments_table' : 'no_records_message',
+                   klass: 'payment', payments: @recent_payments %>
+      </div>
+    </div>
+  </div>
+
+</div>

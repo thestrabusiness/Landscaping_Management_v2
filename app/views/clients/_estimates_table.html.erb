@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>Estimate #</th>
+    <th>Date</th>
+    <th>Address</th>
+    <th>Total</th>
+  </tr>
+  <% estimates.each do |estimate| %>
+    <tr>
+      <th><%= estimate.id %></th>
+      <th><%= estimate.date.strftime('%m/%d/%y') %></th>
+      <th><%= estimate.address.street_city %></th>
+      <th><%= estimate.total %></th>
+    </tr>
+  <% end %>
+</table>

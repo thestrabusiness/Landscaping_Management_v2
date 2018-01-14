@@ -1,16 +1,25 @@
 class ClientsController < ApplicationController
   def index
     @query = params[:query]
-    @clients = Client.search(@query)
+    @clients = Client.preload(:addresses).search(@query).uniq
   end
 
   def show
     set_client
+
     @originating_page = OriginatingPage.new(session[:originating_path] || clients_path)
+    @active_section = params[:active_section] || 'overview'
+
     @billing_address = @client.billing_address
-    @addresses = Address.where(client: @client)
-    @invoices = @client.invoices
-    @payments = @client.payments
+
+    @addresses = @client.addresses
+    @invoices = @client.invoices.order(created_at: :desc).preload(:job_address)
+    @payments = @client.payments.order(created_at: :desc)
+    @estimates = @client.estimates.order(created_at: :desc)
+
+    @recent_invoices = @invoices.take(5)
+    @recent_payments = @payments.take(5)
+    @recent_estimates = @estimates.take(5)
   end
 
   def new

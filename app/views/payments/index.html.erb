@@ -24,22 +24,22 @@
   </div>
 
   <% @payments.each do |payment| %>
+    <div class='payments'>
       <%= link_to payment_path(payment), class: 'payment'  do %>
-          <div class='payment-list'>
-            <div class='payment-list-item payment-client'>
-              <%= payment.client.full_name %>
-            </div>
-            <div class='payment-list-item payment-invoice'>
-              <%= payment.invoice.id %>
-            </div>
-            <div class='payment-list-item payment-type'>
-              <%= payment.payment_type %>
-            </div>
-            <div class='payment-list-item payment-amount'>
-              <%= payment.amount %>
-            </div>
-          </div>
+        <div class='payment-list-item payment-client'>
+          <%= payment.client.full_name %>
+        </div>
+        <div class='payment-list-item payment-invoice'>
+          <%= payment.invoice.id %>
+        </div>
+        <div class='payment-list-item payment-type'>
+          <%= payment.payment_type %>
+        </div>
+        <div class='payment-list-item payment-amount'>
+          <%= payment.amount %>
+        </div>
       <% end %>
+    </div>
   <% end %>
 </div>
 

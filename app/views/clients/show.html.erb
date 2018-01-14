@@ -1,45 +1,56 @@
 <%= render 'shared/detail_topbar', content: @client.full_name %>
 <p> <%= notice %></p>
 
-<div class='client-page-container'>
-  <div class='client-left-container'>
-    <div class='client-details-container'>
-      <div class ='details-section-header'>
-        Client Information
-        <%= link_to '+', edit_client_path %>
+<%= hidden_field_tag('active_section', @active_section) %>
+
+<div class='client-detail-container'>
+  <div class='client-detail-nav'>
+    <div class='vertical-nav-section'>
+      <div class='nav-title-bar'>
+        <span class='nav-title'>Details</span>
       </div>
-        <div class='details-subsection'>
-          <%= render 'shared/detail', header: 'Client Name', content: @client.full_name, css_class: 'client-name' %>
-          <%= render 'shared/detail', header: 'Balance', content: number_to_currency(@client.balance), css_class: 'client-balance' %>
+      <div class='vertical-nav-links'>
+        <div class='vertical-nav-link overview active'>
+          <%= link_to 'Overview', 'javascript:;', class: 'js-client-details-link', id: 'overview' %>
         </div>
-    </div>
-
-    <div class='billing-address-container'>
-      <div class='details-section-header'>
-        Billing Address
-        <%= link_to '+', edit_client_address_path(@billing_address) %>
+       <div class='vertical-nav-link invoices'>
+          <%= link_to 'Invoices', 'javascript:;', class: 'js-client-details-link', id: 'invoices' %>
+        </div>
+       <div class='vertical-nav-link payments'>
+          <%= link_to 'Payments', 'javascript:;', class: 'js-client-details-link', id: 'payments' %>
+        </div>
+       <div class='vertical-nav-link estimates'>
+          <%= link_to 'Estimates', 'javascript:;', class: 'js-client-details-link', id: 'estimates' %>
+        </div>
+       <div class='vertical-nav-link services'>
+          <%= link_to 'Services', 'javascript:;', class: 'js-client-details-link', id: 'services' %>
+        </div>
       </div>
-      <div class='details-subsection'>
-      <%= render 'shared/detail', header: 'Street', content: @billing_address.street, css_class: 'street' %>
-      <%= render 'shared/detail', header: 'City', content: @billing_address.city, css_class: 'city' %>
-      <%= render 'shared/detail', header: 'State', content: @billing_address.state, css_class: 'state' %>
-      <%= render 'shared/detail', header: 'Zip', content: @billing_address.zip, css_class: 'zip' %>
+    </div>
+    <div class='vertical-nav-section'>
+      <div class='nav-title-bar'>
+        <span class='nav-title'>Addresses</span>
+        <div class='nav-button'>
+          <%= link_to 'Add', new_client_address_path(@client) %>
+        </div>
+      </div>
+      <div class='vertical-nav-links'>
+        <% @addresses.each do |address| %>
+          <div class='vertical-nav-link address'>
+            <%= address.street %>
+            <div class='nav-button'>
+              <%= link_to 'Edit', edit_client_address_path(@client, address) %>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
-    <div class='job-addresses-container'>
-      <% @addresses.each do |address| %>
-        <%= render 'job_addresses', address: address %>
-      <% end %>
-    </div>
-
-    <%= link_to new_client_address_path(@client), class: 'details-button' do %>
-      Add New Address
-    <% end %>
   </div>
-
-  <div class='client-right-container'>
-    <% @addresses.each do |address| %>
-      <%= render 'address_services', address: address, services: address.service_prices %>
-    <% end %>
+  <div class='client-detail-body'>
+    <%= render 'overview' %>
+    <%= render 'invoices' %>
+    <%= render 'payments' %>
+    <%= render 'estimates' %>
+    <%= render 'services' %>
   </div>
 </div>

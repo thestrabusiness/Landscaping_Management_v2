@@ -29,24 +29,24 @@
     </div>
   </div>
 
-  <% @clients.each do |client| %>
-    <%= link_to client_path(client), class: 'client'  do %>
-      <div class='client-list'>
-        <div class='client-list-item first-name'>
-          <%= client.first_name %>
-        </div>
-        <div class='client-list-item last-name'>
-          <%= client.last_name %>
-        </div>
-        <div class='client-list-item address'>
-          <%= client.full_billing_address %>
-        </div>
-        <div class='client-list-item balance'>
-          <%= client.balance %>
-        </div>
-      </div>
+  <div class='clients'>
+    <% @clients.each do |client| %>
+      <%= link_to client_path(client), class: 'client'  do %>
+          <div class='client-list-item first-name'>
+            <%= client.first_name %>
+          </div>
+          <div class='client-list-item last-name'>
+            <%= client.last_name %>
+          </div>
+          <div class='client-list-item address'>
+            <%= client.full_billing_address %>
+          </div>
+          <div class='client-list-item balance'>
+            <%= number_to_currency client.balance %>
+          </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
 
 <%= link_to 'Add New Client', new_client_path, class: 'add-client-button' %>

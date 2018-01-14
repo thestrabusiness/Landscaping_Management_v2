@@ -1,9 +1,10 @@
-.client-address-services-container,
 .invoice-item {
   clear: both;
+  height: auto;
 }
 
 .service,
+.recent-item,
 .invoice-item {
   display: block;
   height: $row-height;
@@ -14,6 +15,13 @@
 
   &:nth-child(odd) {
     background-color: $off-white;
+  }
+}
+
+.recent-item,
+.service {
+  &:last-child {
+    margin-bottom: 20px;
   }
 }
 
@@ -48,10 +56,32 @@
   border-bottom: 1px solid $light-grey;
 }
 
+.recent-invoices-container,
+.recent-payments-container{
+  //min-width: 660px;
+  clear: both;
+}
+
+.message {
+  text-align: center;
+}
+
+.recent-item-address,
 .service-name {
   @include span-columns(5);
 }
 
+.recent-item-date,
 .service-price {
   @include span-columns(2);
+}
+
+.recent-item-number {
+  @include span-columns(2.5)
+}
+
+
+.no-recent-message {
+  padding: 15%;
+  display: inline-block;
 }

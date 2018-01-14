@@ -28,27 +28,27 @@
     </div>
 
       <% @estimates.each do |estimate| %>
-        <%= link_to estimate_path(estimate), class: 'estimate'  do %>
-            <div class='estimate-list'>
-              <div class='estimate-list-item checkbox'>
-                <%= check_box_tag "selected_estimates[]", estimate.id %>
-              </div>
-              <div class='estimate-list-item estimate-date'>
-                <%= estimate.date.strftime('%m/%d/%y') %>
-              </div>
-              <div class='estimate-list-item estimate-client'>
-                <%= estimate.client.full_name %>
-              </div>
-              <div class='estimate-list-item estimate-job-address'>
-                <%= estimate.address.full_address %>
-              </div>
-              <div class='estimate-list-item estimate-total'>
-                <%= estimate.total %>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
+          <div class='estimates'>
+            <%= link_to estimate_path(estimate), class: 'estimate'  do %>
+                <div class='estimate-list-item checkbox'>
+                  <%= check_box_tag "selected_estimates[]", estimate.id %>
+                </div>
+                <div class='estimate-list-item estimate-date'>
+                  <%= estimate.date.strftime('%m/%d/%y') %>
+                </div>
+                <div class='estimate-list-item estimate-client'>
+                  <%= estimate.client.full_name %>
+                </div>
+                <div class='estimate-list-item estimate-job-address'>
+                  <%= estimate.address.full_address %>
+                </div>
+                <div class='estimate-list-item estimate-total'>
+                  <%= estimate.total %>
+                </div>
+            <% end %>
+          </div>
+      <% end %>
+    </div>
 
       <div class='estimate-bottom-container l-shift'>
         <div class='left-buttons'>
