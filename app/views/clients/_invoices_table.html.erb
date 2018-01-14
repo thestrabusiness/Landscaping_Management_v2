@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>Invoice #</th>
+    <th>Job Date</th>
+    <th>Job Address</th>
+    <th>Total</th>
+  </tr>
+  <% @recent_invoices.each do |invoice| %>
+    <tr>
+      <th><%= invoice.id %></th>
+      <th><%= invoice.job_date.strftime('%m/%d/%y') %></th>
+      <th><%= invoice.job_address.street_city %></th>
+      <th><%= invoice.total %></th>
+    </tr>
+  <% end %>
+</table>

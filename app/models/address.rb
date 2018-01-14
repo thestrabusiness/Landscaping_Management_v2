@@ -2,6 +2,7 @@ class Address < ApplicationRecord
   belongs_to :client
   has_many :invoices
   has_many :service_prices
+  has_many :estimates
 
   validates :street, :city, :state, :zip, presence: true
   validates :client, presence: true

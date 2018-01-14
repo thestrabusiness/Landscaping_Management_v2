@@ -1,0 +1,14 @@
+<table>
+  <tr>
+    <th>Payment #</th>
+    <th>Date</th>
+    <th>Amount</th>
+  </tr>
+  <% @payments.each do |payment| %>
+    <tr>
+      <th><%= payment.id %></th>
+      <th><%= payment.created_at.strftime('%m/%d/%y') %></th>
+      <th><%= payment.amount %></th>
+    </tr>
+  <% end %>
+</table>

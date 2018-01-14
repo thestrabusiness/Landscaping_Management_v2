@@ -1,9 +1,4 @@
-.client-page-container {
-  @include span-columns(13);
-  @include shift(0.5);
 
-  min-width: $min-width-all-clients;
-}
 
 .client-left-container {
   @include span-columns(2.5 of 12)
