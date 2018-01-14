@@ -1,3 +1,43 @@
-<div class='client-detail-section services'>
-
+<div class='client-detail-section services hidden'>
+  <div class='client-detail-header'>
+    <div class='client-detail-title'>
+      <span>Service Overview</span>
+    </div>
+    <div class='client-detail-search'>
+      <%= text_field_tag(:search, 'Search') %>
+    </div>
+    <hr class='section-break'>
+    <div class='client-detail service-count'>
+      <div class='label'>
+        Number of Services
+      </div>
+      <span>
+        <%= @client.service_prices.count %>
+      </span>
+    </div>
+    <div class='client-detail new-service'>
+      <div class='label'>
+        Add New Service
+      </div>
+      <span>
+        <%= select_tag('address_service_select',
+                       options_from_collection_for_select(@addresses, :id, :street_city),
+                       prompt: 'Select an address') %>
+          <%= link_to 'Add', 'javascript:;', class: 'hidden add-service-link'%>
+      </span>
+    </div>
+  </div>
+  <div class='client-detail-list'>
+    <div class='full-size-list services'>
+      <% @addresses.each do |address| %>
+        <div class='list-title'>
+          <%= address.street_city %>
+        </div>
+        <div class='details-list'>
+          <%= render address.service_prices.present? ? 'services_table' : 'no_records_message',
+                     klass: 'service', services: address.service_prices %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

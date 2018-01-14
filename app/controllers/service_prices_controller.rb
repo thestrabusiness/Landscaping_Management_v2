@@ -11,7 +11,7 @@ class ServicePricesController < ApplicationController
     @service_price.client = @address.client
 
     if @service_price.save
-      redirect_to @service_price.client, notice: 'Successfully added new service!'
+      redirect_to client_path(@service_price.client, active_section: 'services'), notice: 'Successfully added new service!'
     else
       flash.now[:notice] = 'The service could not be saved!'
       render :new

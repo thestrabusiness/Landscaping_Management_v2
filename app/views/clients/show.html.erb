@@ -1,6 +1,8 @@
 <%= render 'shared/detail_topbar', content: @client.full_name %>
 <p> <%= notice %></p>
 
+<%= hidden_field_tag('active_section', @active_section) %>
+
 <div class='client-detail-container'>
   <div class='client-detail-nav'>
     <div class='vertical-nav-section'>
@@ -8,11 +10,21 @@
         <span class='nav-title'>Details</span>
       </div>
       <div class='vertical-nav-links'>
-        <div class='vertical-nav-link'> Overview </div>
-        <div class='vertical-nav-link'> Invoices </div>
-        <div class='vertical-nav-link'> Payments </div>
-        <div class='vertical-nav-link'> Estimates </div>
-        <div class='vertical-nav-link'> Services </div>
+        <div class='vertical-nav-link overview active'>
+          <%= link_to 'Overview', 'javascript:;', class: 'js-client-details-link', id: 'overview' %>
+        </div>
+       <div class='vertical-nav-link invoices'>
+          <%= link_to 'Invoices', 'javascript:;', class: 'js-client-details-link', id: 'invoices' %>
+        </div>
+       <div class='vertical-nav-link payments'>
+          <%= link_to 'Payments', 'javascript:;', class: 'js-client-details-link', id: 'payments' %>
+        </div>
+       <div class='vertical-nav-link estimates'>
+          <%= link_to 'Estimates', 'javascript:;', class: 'js-client-details-link', id: 'estimates' %>
+        </div>
+       <div class='vertical-nav-link services'>
+          <%= link_to 'Services', 'javascript:;', class: 'js-client-details-link', id: 'services' %>
+        </div>
       </div>
     </div>
     <div class='vertical-nav-section'>

@@ -1,3 +1,38 @@
-<div class='client-detail-section invoices'>
-
+<div class='client-detail-section invoices hidden'>
+  <div class='client-detail-header'>
+    <div class='client-detail-title'>
+      <span>Invoice History</span>
+    </div>
+    <div class='client-detail-search'>
+      <%= text_field_tag(:search, 'Search') %>
+    </div>
+    <hr class='section-break'>
+    <div class='client-detail invoice-count'>
+      <div class='label'>
+        Number of Invoices
+      </div>
+      <span>
+        <%= @client.invoices.count %>
+      </span>
+    </div>
+    <div class='client-detail balance'>
+      <div class='label'>
+        Balance
+      </div>
+      <span>
+        <%= @client.balance %>
+      </span>
+    </div>
+  </div>
+  <div class='client-detail-list'>
+    <div class='full-size-list invoices'>
+      <div class='list-title'>
+        Invoices
+      </div>
+      <div class='details-list'>
+        <%= render @invoices.present? ? 'invoices_table' : 'no_records_message',
+                   klass: 'invoice', invoices: @invoices %>
+      </div>
+    </div>
+  </div>
 </div>

@@ -4,7 +4,7 @@
     <th>Date</th>
     <th>Amount</th>
   </tr>
-  <% @payments.each do |payment| %>
+  <% payments.each do |payment| %>
     <tr>
       <th><%= payment.id %></th>
       <th><%= payment.created_at.strftime('%m/%d/%y') %></th>

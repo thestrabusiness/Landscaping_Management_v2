@@ -1,12 +1,13 @@
 .client-detail-container {
   width: 1000px;
-  height: 750px;
+  min-height: 500px;
   background: white;
   margin: auto;
 }
 
 .client-detail-nav,
 .client-detail-body {
+  min-height: inherit;
   height: inherit;
   display: inline-block;
 }
@@ -14,6 +15,10 @@
 .client-detail-nav {
   width: 250px;
   float: left;
+
+  a {
+    color: black;
+  }
 
   .nav-title-bar {
     padding-left: 15px;
@@ -34,6 +39,10 @@
 
   .vertical-nav-link {
     font-size: 18px;
+  }
+
+  .active {
+    background: #7cb979;
   }
 
   .nav-button {
@@ -73,7 +82,7 @@
   }
 
   .client-detail {
-    width: 50%;
+    width: 49%;
     text-align: center;
 
     span {

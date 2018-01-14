@@ -1,10 +1,10 @@
-<div class='client-detail-section overview active'>
+<div class='client-detail-section overview'>
   <div class='client-detail-header'>
     <div class='client-detail-title'>
       <span>Overview</span>
     </div>
     <div class='client-detail-search'>
-      <%= text_field_tag(:search) %>
+      <%= text_field_tag(:search, 'Search') %>
     </div>
     <hr class='section-break'>
     <div class='client-detail billing-address'>
@@ -30,8 +30,8 @@
         Recent Invoices
       </div>
       <div class='details-list'>
-        <%= render @invoices.present? ? 'invoices_table' : 'clients/detail_sections/no_records_message',
-                   klass: 'invoice' %>
+        <%= render @invoices.present? ? 'invoices_table' : 'no_records_message',
+                   klass: 'invoice', invoices: @recent_invoices %>
       </div>
     </div>
     <div class='half-height-list payments'>
@@ -39,8 +39,8 @@
         Recent Payments
       </div>
       <div class='details-list'>
-        <%= render @payments.present? ? 'payments_table' : 'clients/detail_sections/no_records_message',
-                   klass: 'payment' %>
+        <%= render @payments.present? ? 'payments_table' : 'no_records_message',
+                   klass: 'payment', payments: @recent_payments %>
       </div>
     </div>
   </div>
