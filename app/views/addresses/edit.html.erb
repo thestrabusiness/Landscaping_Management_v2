@@ -1,7 +1,6 @@
-<div class='edit-address-header'>
-  <div class='edit-address-header-title'>
-    Edit <%= @address.street %>
-  </div>
-</div>
+<%= render 'shared/back_button_top_bar', label: @client.full_name, path: client_path(@client) %>
 
-<%= render 'addresses_form' %>
+<div class='form-page'>
+  <%= render 'shared/form_header', title: "Edit #{@address.street}" %>
+  <%= render 'addresses_form' %>
+</div>

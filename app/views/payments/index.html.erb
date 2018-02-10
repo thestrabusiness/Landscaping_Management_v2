@@ -9,6 +9,9 @@
   </div>
 
   <div class='payment-list-header'>
+    <div class='payment-list-header-item payment-date'>
+      Date
+    </div>
     <div class='payment-list-header-item payment-client'>
       Client
     </div>
@@ -25,7 +28,10 @@
 
   <% @payments.each do |payment| %>
     <div class='payments'>
-      <%= link_to payment_path(payment), class: 'payment'  do %>
+      <%= link_to edit_payment_path(payment), class: 'payment'  do %>
+        <div class='payment-list-item payment-date'>
+          <%= payment.created_at.strftime('%m/%d/%y') %>
+        </div>
         <div class='payment-list-item payment-client'>
           <%= payment.client.full_name %>
         </div>
@@ -43,4 +49,6 @@
   <% end %>
 </div>
 
-<%= link_to 'Add New Payment', new_payment_path, class: 'add-payment-button' %>
+<%= link_to new_payment_path, class: 'add-record-btn' do %>
+  <%= inline_svg 'add-record-btn.svg' %>
+<% end %>

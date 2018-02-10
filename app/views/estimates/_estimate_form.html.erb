@@ -1,5 +1,6 @@
 <%= simple_form_for [@estimate] do |f| %>
-    <%= f.input :date, as: :date %>
+    <label class='manual-label'>Date</label>
+    <%= f.input :date, as: :date, label: false %>
     <%= f.input :address,
                 as: :string,
                 input_html: {

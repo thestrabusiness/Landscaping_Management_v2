@@ -1,7 +1,6 @@
-<div class='edit-invoice-header'>
-  <div class='edit-invoice-header-title'>
-    Edit Invoice
-  </div>
-</div>
+<%= render 'shared/back_button_top_bar', label: "Invoice Details", path: invoice_path(@invoice) %>
 
-<%= render 'invoices_form' %>
+<div class='form-page'>
+  <%= render 'shared/form_header', title: 'Edit Invoice' %>
+  <%= render 'invoices_form' %>
+</div>

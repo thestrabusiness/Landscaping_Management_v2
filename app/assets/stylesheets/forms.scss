@@ -1,0 +1,56 @@
+.form-page-header {
+  height: $header-height;
+  background-color: $base-green;
+  color: $white;
+
+  margin-top: 30px;
+
+  .form-page-title {
+    @include position(relative, 23px null null 30px);
+
+  }
+}
+
+.form-page {
+  margin: 0 auto;
+  width: 30%;
+  box-shadow: 5px 10px 10px $dark-gray;
+
+  .form-container {
+    background-color: $white;
+  }
+
+  form {
+    padding-top: 30px;
+  }
+
+  .input {
+    width: 90%;
+    padding-left: 30px;
+
+    &.numerical-input {
+      width: 30%;
+      input {
+        width: 45px;
+      }
+    }
+
+
+
+    abbr {
+      text-decoration: none;
+    }
+
+    input {
+      width: 100%;
+    }
+  }
+
+  .btn {
+    margin: 30px;
+  }
+
+  .manual-label {
+    padding-left: 30px;
+  }
+}

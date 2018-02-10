@@ -1,7 +1,6 @@
-<div class='edit-payment-header'>
-  <div class='edit-payment-header-title'>
-    Edit Payment
-  </div>
-</div>
+<%= render 'shared/back_button_top_bar', label: "Payments", path: payments_path %>
 
-<%= render 'payments_form' %>
+<div class='form-page'>
+  <%= render 'shared/form_header', title: 'Edit Payment' %>
+  <%= render 'payments_form' %>
+</div>

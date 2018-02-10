@@ -22,6 +22,7 @@
 
 .details-topbar {
   margin-bottom: 35px;
+  vertical-align: middle;
 }
 
 .details-topbar,
@@ -40,10 +41,9 @@
 }
 
 .back {
-  @include vertically-centered;
-  float: left;
-  top: 50%;
+  position: relative;
+  top: 10px;
+  padding-left: 30px;
   color: $base-font-color;
   font-size: $large-font-size;
-  margin-left: 90px;
 }

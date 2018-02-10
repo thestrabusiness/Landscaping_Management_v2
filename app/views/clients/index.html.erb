@@ -49,4 +49,6 @@
   </div>
 </div>
 
-<%= link_to 'Add New Client', new_client_path, class: 'add-client-button' %>
+<%= link_to new_client_path, class: 'add-record-btn' do %>
+  <%= inline_svg 'add-record-btn.svg' %>
+<% end %>

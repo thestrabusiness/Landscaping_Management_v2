@@ -4,8 +4,8 @@ body {
 
 .service-list {
   @include position(relative, 20px null null null);
-  @include span-columns(8);
-  @include shift(.50);
+  width: 65%;
+  margin: auto;
 
   min-width: $min-width-all-clients;
 
@@ -18,7 +18,7 @@ body {
   }
 
   .service-list-item {
-    @include position(relative, 5px 40px null null);
+    @include position(relative, -3px 40px null 0px);
     height: $row-height;
   }
 
@@ -32,15 +32,15 @@ body {
 }
 
 .service-form-container {
-  padding-bottom: 30px;
+  padding-bottom: 100px;
 }
 
 .service-header {
   background-color: $base-green;
-  height: 86px;
+  height: $header-height;
 
   .service-header-title {
-    @include position(relative, 29px null null 30px);
+    @include position(relative, 23px null null 30px);
 
     color: $white;
     font-size: $medium-large-font-size;

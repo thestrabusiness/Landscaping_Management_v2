@@ -1,7 +1,6 @@
-<div class='new-address-header'>
-  <div class='new-address-header-title'>
-    Add New Address
-  </div>
-</div>
+<%= render 'shared/back_button_top_bar', label: @client.full_name, path: client_path(@client) %>
 
-<%= render 'addresses_form' %>
+<div class='form-page'>
+  <%= render 'shared/form_header', title: 'Add New Address' %>
+  <%= render 'addresses_form' %>
+</div>

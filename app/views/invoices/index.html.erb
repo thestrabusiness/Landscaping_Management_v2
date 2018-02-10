@@ -64,4 +64,6 @@
   </div>
 <% end %>
 
-<%= link_to 'Add New Invoice', new_invoice_path, class: 'add-invoice-button' %>
+  <%= link_to new_invoice_path, class: 'add-record-btn' do %>
+    <%= inline_svg 'add-record-btn.svg' %>
+  <% end %>

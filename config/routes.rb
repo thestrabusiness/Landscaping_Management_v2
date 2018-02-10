@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :payments
+  resources :payments, except: :show
 
   root 'clients#index'
 end

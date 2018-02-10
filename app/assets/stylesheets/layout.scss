@@ -5,3 +5,8 @@ a {
 .hidden {
   display: none;
 }
+
+.add-record-btn {
+  @include position(fixed, null 55px 55px null);
+  display: block;
+}

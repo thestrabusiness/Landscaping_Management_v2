@@ -1,7 +1,6 @@
-<div class='new-estimate-item-header'>
-  <div class='new-estimate-item-header-title'>
-    Add New Estimate Item
-  </div>
-</div>
+<%= render 'shared/back_button_top_bar', label: 'Estimate', path: estimate_path(@estimate) %>
 
-<%= render 'estimate_item_form' %>
+<div class='form-page'>
+  <%= render 'shared/form_header', title: 'New Estimate Item' %>
+  <%= render 'estimate_items/estimate_item_form' %>
+</div>

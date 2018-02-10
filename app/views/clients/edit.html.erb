@@ -1,7 +1,6 @@
-<div class='new-client-header'>
-  <div class='new-client_header-title'>
-    Edit <%= @client.full_name %>
-  </div>
-</div>
+<%= render 'shared/back_button_top_bar', label: 'Clients', path: clients_path %>
 
-<%= render 'clients_form' %>
+<div class='form-page'>
+  <%= render 'shared/form_header', title: "Edit #{@client.full_name}" %>
+  <%= render 'clients/clients_form' %>
+</div>

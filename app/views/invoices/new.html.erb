@@ -1,7 +1,6 @@
-<div class='new-invoice-header'>
-  <div class='new-invoice-header-title'>
-    Add New Invoice
-  </div>
-</div>
+<%= render 'shared/back_button_top_bar', label: "Invoices", path: invoices_path %>
 
-<%= render 'invoices_form' %>
+<div class='form-page'>
+  <%= render 'shared/form_header', title: 'New Invoice' %>
+  <%= render 'invoices_form' %>
+</div>

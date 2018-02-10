@@ -72,10 +72,10 @@
 
 .invoice-count-header {
   background-color: $base-green;
-  height: 86px;
+  height: $header-height;
 
   .invoice-count {
-    @include position(relative, 29px null null 30px);
+    @include position(relative, 23px null null 30px);
 
     color: $white;
     font-size: $medium-large-font-size;

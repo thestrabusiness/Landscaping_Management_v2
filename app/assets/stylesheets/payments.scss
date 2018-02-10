@@ -10,14 +10,12 @@
     @include position(relative, 15px null null null);
   }
 
-  .payment-list-header-item.payment-client {
-    @include span-columns(4 of 16)
-  }
-
+  .payment-list-header-item.payment-date,
+  .payment-list-header-item.payment-client,
   .payment-list-header-item.payment-invoice,
   .payment-list-header-item.payment-type,
-  .payment-list-header-item.payment-amount{
-    @include span-columns(4 of 16)
+  .payment-list-header-item.payment-amount {
+    @include span-columns(3 of 16)
   }
 
   .payment-list-item {
@@ -25,18 +23,16 @@
     height: $row-height;
   }
 
-  .payment-client {
+  .payment-date {
     padding-left: 30px;
   }
 
-  .payment-list-item.payment-client {
-    @include span-columns(4 of 16)
-  }
-
+  .payment-list-item.payment-date,
+  .payment-list-item.payment-client,
   .payment-list-item.payment-invoice,
   .payment-list-item.payment-type,
-  .payment-list-item.payment-amount{
-    @include span-columns(4 of 16)
+  .payment-list-item.payment-amount {
+    @include span-columns(3 of 16)
   }
 }
 
@@ -46,10 +42,10 @@
 
 .payment-count-header {
   background-color: $base-green;
-  height: 86px;
+  height: $header-height;
 
   .payment-count {
-    @include position(relative, 29px null null 30px);
+    @include position(relative, 23px null null 30px);
 
     color: $white;
     font-size: $medium-large-font-size;

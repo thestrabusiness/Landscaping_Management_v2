@@ -1,7 +1,6 @@
-<div class='edit-invoice-header'>
-  <div class='edit-invoice-header-title'>
-    Edit Estimate
-  </div>
-</div>
+<%= render 'shared/back_button_top_bar', label: "Estimate Details", path: estimate_path(@estimate) %>
 
-<%= render 'estimate_form' %>
+<div class='form-page'>
+  <%= render 'shared/form_header', title: 'Edit Estimate' %>
+  <%= render 'estimate_form' %>
+</div>

@@ -1,7 +1,6 @@
-<div class='new-payment-header'>
-  <div class='new-payment-header-title'>
-    Add New Payment
-  </div>
-</div>
+<%= render 'shared/back_button_top_bar', label: "Payments", path: payments_path %>
 
-<%= render 'payments_form' %>
+<div class='form-page'>
+  <%= render 'shared/form_header', title: 'New Payment' %>
+  <%= render 'payments_form' %>
+</div>

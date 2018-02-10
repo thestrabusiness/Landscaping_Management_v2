@@ -1,5 +1,6 @@
 <%= simple_form_for [@invoice, @invoice_item] do |f| %>
-    <%= f.input :name, as: :select, collection: @options %>
+    <label class='manual-label'>Name</label>
+    <%= f.input :name, as: :select, collection: @options, label: false %>
 
     <div id="other_text_box" class="control-group">
       <div class="controls">
