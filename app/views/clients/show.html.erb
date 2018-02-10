@@ -1,5 +1,4 @@
 <%= render 'shared/detail_topbar', content: @client.full_name %>
-<p> <%= notice %></p>
 
 <%= hidden_field_tag('active_section', @active_section) %>
 
@@ -8,6 +7,9 @@
     <div class='vertical-nav-section'>
       <div class='nav-title-bar'>
         <span class='nav-title'>Details</span>
+        <div class='nav-button'>
+          <%= link_to 'Edit', edit_client_path(@client) %>
+        </div>
       </div>
       <div class='vertical-nav-links'>
         <div class='vertical-nav-link overview active'>
@@ -35,7 +37,7 @@
         </div>
       </div>
       <div class='vertical-nav-links'>
-        <% @addresses.each do |address| %>
+        <% @client.addresses.each do |address| %>
           <div class='vertical-nav-link address'>
             <%= address.street %>
             <div class='nav-button'>

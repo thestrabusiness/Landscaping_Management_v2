@@ -3,7 +3,7 @@
   <%= f.input :first_name %>
   <%= f.input :last_name %>
   <%= f.input :phone_number %>
-      <%= simple_fields_for @billing_address do |b| %>
+      <%= simple_fields_for @client.billing_address || @billing_address do |b| %>
           <%= b.input :street%>
           <%= b.input :city %>
           <%= b.input :state%>

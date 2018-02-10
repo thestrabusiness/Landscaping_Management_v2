@@ -47,8 +47,13 @@ class InvoicesController < ApplicationController
   end
 
   def download_labels
-    @invoices = Invoice.where(id: params[:selected_invoices])
-    render :labels, layout: 'labels'
+    if params[:selected_invoices].present?
+      @invoices = Invoice.where(id: params[:selected_invoices])
+      render :labels, layout: 'labels'
+    else
+      flash.now[:error] = 'You must select one or more invoices to generate labels'
+      render :index
+    end
   end
 
   def download_pdf
@@ -58,9 +63,15 @@ class InvoicesController < ApplicationController
   end
 
   def download_pdf_collection
-    invoice_ids = params[:selected_invoices]
-    pdf = InvoicePDFGenerator.generate(invoice_ids)
-    send_data(pdf, filename: "invoices_#{Date.today.strftime('%m_%d_%Y')}.pdf")
+    if params[:selected_invoices].present?
+      invoice_ids = params[:selected_invoices]
+      pdf = InvoicePDFGenerator.generate(invoice_ids)
+      send_data(pdf, filename: "invoices_#{Date.today.strftime('%m_%d_%Y')}.pdf")
+    else
+      @invoices = Invoice.all
+      flash.now[:error] = 'You must select one or more invoices to export a PDF'
+      render :index
+    end
   end
 
   private

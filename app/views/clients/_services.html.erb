@@ -21,7 +21,7 @@
       </div>
       <span>
         <%= select_tag('address_service_select',
-                       options_from_collection_for_select(@addresses, :id, :street_city),
+                       options_from_collection_for_select(@client.addresses, :id, :street_city),
                        prompt: 'Select an address') %>
           <%= link_to 'Add', 'javascript:;', class: 'hidden add-service-link'%>
       </span>
@@ -29,7 +29,7 @@
   </div>
   <div class='client-detail-list'>
     <div class='full-size-list services'>
-      <% @addresses.each do |address| %>
+      <% @client.addresses.each do |address| %>
         <div class='list-title'>
           <%= address.street_city %>
         </div>

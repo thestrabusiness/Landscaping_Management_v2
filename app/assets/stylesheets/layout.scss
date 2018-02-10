@@ -10,3 +10,18 @@ a {
   @include position(fixed, null 55px 55px null);
   display: block;
 }
+
+.notices {
+  margin: 0;
+  padding: 12px;
+  text-align: center;
+
+  &.error {
+    background: #ff7378;
+  }
+
+  &.notice {
+    background: #7cb979;
+  }
+}
+

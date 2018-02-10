@@ -10,9 +10,6 @@ class ClientsController < ApplicationController
     @originating_page = OriginatingPage.new(session[:originating_path] || clients_path)
     @active_section = params[:active_section] || 'overview'
 
-    @billing_address = @client.billing_address
-
-    @addresses = @client.addresses
     @invoices = @client.invoices.order(created_at: :desc).preload(:job_address)
     @payments = @client.payments.order(created_at: :desc)
     @estimates = @client.estimates.order(created_at: :desc)
@@ -47,7 +44,8 @@ class ClientsController < ApplicationController
   end
 
   def update
-    if client.update(client_params)
+    set_client
+    if @client.update(client_params)
       redirect_to client_path(@client), notice: 'The client was successfully updated!'
     else
       flash.now[:notice] = 'The client could not be updated!'
