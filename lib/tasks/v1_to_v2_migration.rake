@@ -21,12 +21,40 @@ namespace :v1_to_v2_migration do
     def migrate_client_prices
       client_price_psych_object.each do |object|
         params = object[1]
-        client = Client.where(old_id: params[:client_id]).take
+        client = Client.find_by(old_id: params[:client_id])
         ServicePrice.create(
             name: params[:name],
             price: params[:price],
             client: client,
             address: client.billing_address
+        )
+      end
+    end
+
+    def migrate_invoices
+      invoices_psych_object.each do |object|
+        params = object[1]
+        client = Client.find_by(old_id: params[:client_id])
+        Invoice.create(
+                   client: client,
+                   job_address: client.billing_address,
+                   billing_address: client.billing_address,
+                   total: params[:total],
+                   job_date: params[:date],
+                   status: params[:status],
+                   notes: params[:note],
+                   old_id: params[:id]
+        )
+      end
+
+      invoice_items_psych_object.each do |object|
+        params = object[1]
+        invoice = Invoice.find_by(old_id: params[:invoice_id])
+        InvoiceItem.create(
+                       invoice: invoice,
+                       name: params[:name],
+                       price: params[:price],
+                       quantity: params[:quantity]
         )
       end
     end
@@ -47,6 +75,14 @@ namespace :v1_to_v2_migration do
 
     def clients_psych_object
       Psych.load_file(Rails.root.join('Client.yml').to_s).with_indifferent_access
+    end
+
+    def invoices_psych_object
+      Psych.load_file(Rails.root.join('Invoice.yml').to_s).with_indifferent_access
+    end
+
+    def invoice_items_psych_object
+      Psych.load_file(Rails.root.join('InvoiceItem.yml').to_s).with_indifferent_access
     end
 
     def corrected_zip
@@ -87,6 +123,7 @@ namespace :v1_to_v2_migration do
     migrate_clients
     migrate_services
     migrate_client_prices
+    migrate_invoices
   end
 end
 
