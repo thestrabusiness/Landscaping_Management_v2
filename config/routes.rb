@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :clients do
     resources :addresses, only: [:new, :create, :edit, :update]
     resources :invoices, only: [:new, :create]
+    get :reminders, on: :collection
   end
 
   resources :addresses, only: [] do

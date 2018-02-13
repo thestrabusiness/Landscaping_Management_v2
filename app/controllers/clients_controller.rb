@@ -59,6 +59,12 @@ class ClientsController < ApplicationController
     @client.save
   end
 
+  def reminders
+    client_ids = Client.where('CAST(balance AS numeric) > ?', 0.0).pluck(:id)
+    pdf = ReminderPDFGenerator.generate(client_ids)
+    send_data(pdf, filename: "reminders_#{Date.current.strftime('%m_%d_%Y')}.pdf")
+  end
+
   private
 
   def set_client
