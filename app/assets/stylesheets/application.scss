@@ -2,8 +2,10 @@
 @import 'neat';
 @import 'utilities/mixins';
 @import 'utilities/variables';
+@import 'utilities/fonts';
 
 @import 'layout';
+@import 'shared';
 @import 'jquery_ui';
 @import 'application_topbars';
 @import 'application_navbar';

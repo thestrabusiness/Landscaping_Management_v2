@@ -14,11 +14,7 @@ class Invoice < ApplicationRecord
   end
 
   def summary
-    [
-        client.full_name,
-        job_address.street,
-        total
-    ].join(' - ')
+    [client.full_name, job_address.street, total].join(' - ')
   end
 
   def job

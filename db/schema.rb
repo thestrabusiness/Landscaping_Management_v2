@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170508000442) do
+ActiveRecord::Schema.define(version: 20180701130233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20170508000442) do
     t.integer  "old_id"
     t.index ["billing_address_id"], name: "index_clients_on_billing_address_id", using: :btree
     t.index ["id"], name: "index_clients_on_id", using: :btree
+    t.index ["old_id"], name: "index_clients_on_old_id", using: :btree
   end
 
   create_table "estimate_items", force: :cascade do |t|
@@ -86,6 +87,7 @@ ActiveRecord::Schema.define(version: 20170508000442) do
     t.datetime "deleted_at"
     t.integer  "billing_address_id"
     t.integer  "job_address_id"
+    t.integer  "old_id"
     t.index ["billing_address_id"], name: "index_invoices_on_billing_address_id", using: :btree
     t.index ["client_id"], name: "index_invoices_on_client_id", using: :btree
     t.index ["job_address_id"], name: "index_invoices_on_job_address_id", using: :btree
@@ -116,6 +118,17 @@ ActiveRecord::Schema.define(version: 20170508000442) do
 
   create_table "services", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                           null: false
+    t.string   "password_digest",                 null: false
+    t.string   "first_name",                      null: false
+    t.string   "last_name",                       null: false
+    t.boolean  "admin",           default: false
+    t.boolean  "approved",        default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
 end

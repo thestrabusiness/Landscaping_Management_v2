@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resource :session, only: [:new, :create, :destroy]
+  resources :users, only: [:new, :create]
   resources :clients do
     resources :addresses, only: [:new, :create, :edit, :update]
     resources :invoices, only: [:new, :create]
@@ -39,5 +41,5 @@ Rails.application.routes.draw do
 
   resources :payments, except: :show
 
-  root 'clients#index'
+  root 'sessions#new'
 end
