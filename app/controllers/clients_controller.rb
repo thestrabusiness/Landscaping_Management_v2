@@ -65,6 +65,12 @@ class ClientsController < ApplicationController
     send_data(pdf, filename: "reminders_#{Date.current.strftime('%m_%d_%Y')}.pdf")
   end
 
+  def summary
+    address_ids = Address.pluck(:id)
+    pdf = ClientListPDFGenerator.generate(address_ids)
+    send_data(pdf, filename: "client_list_#{Date.current.strftime('%m_%d_%Y')}.pdf")
+  end
+
   private
 
   def set_client

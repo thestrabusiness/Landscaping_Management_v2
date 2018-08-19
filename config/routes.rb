@@ -5,8 +5,12 @@ Rails.application.routes.draw do
   resources :clients do
     resources :addresses, only: [:new, :create, :edit, :update]
     resources :invoices, only: [:new, :create]
-    get :reminders, on: :collection
+    collection do
+      get :reminders
+      get :summary
+    end
   end
+
 
   resources :addresses, only: [] do
     resources :service_prices, except: [:index, :show]
@@ -41,5 +45,5 @@ Rails.application.routes.draw do
 
   resources :payments, except: :show
 
-  root 'sessions#new'
+  root 'clients#index'
 end
