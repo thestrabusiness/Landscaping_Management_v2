@@ -28,7 +28,7 @@ class ReminderPDFGenerator
 
       move_down 30
       text 'You are receiving this letter because you have an outstanding balance according' +
-           'to our records. We would greatly appreciate it if you could pay your balance before' +
+           ' to our records. We would greatly appreciate it if you could pay your balance before' +
            ' the beginning of the next season.'
 
       move_down 12

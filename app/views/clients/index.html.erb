@@ -12,8 +12,8 @@
       <% end %>
     </div>
     <div class='client-reminders-button'>
-      <%= link_to 'Client List', summary_clients_path %>
-      <%= link_to 'Generate Reminders', reminders_clients_path %>
+      <%= button_to 'Client List', summary_clients_path, method: :get %>
+      <%= button_to 'Generate Reminders', reminders_clients_path, method: :get %>
     </div>
   </div>
 
