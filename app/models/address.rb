@@ -7,10 +7,9 @@ class Address < ApplicationRecord
   validates :street, :city, :state, :zip, presence: true
   validates :client, presence: true
 
-  before_create :assign_position, if: Proc.new { |address| address.is_job_address? }
-
-  #acts_as_list gem takes care of ordering job order
-  acts_as_list
+  before_create :assign_default_position, if: :is_job_address?
+  after_create :insert_at_new_position
+  after_update :reorder_addresses
 
   def self.job_addresses
     where(billing_address: false)
@@ -18,16 +17,6 @@ class Address < ApplicationRecord
 
   def self.autocomplete_source
     order(:client_id).map{ |address| { label: address.full_address, id: address.id }}
-  end
-
-  def assign_position
-    max_position = Address.maximum(:position)
-
-    if max_position.present?
-      self.position = max_position + 1
-    else
-      self.position = 1
-    end
   end
 
   def full_address
@@ -43,4 +32,32 @@ class Address < ApplicationRecord
     "#{street} - #{city}"
   end
 
+  private
+
+  def assign_default_position
+    return if position.present?
+    max_position = Address.maximum(:position)
+    self.position = max_position.present? ? max_position + 1 : 1
+  end
+
+  def insert_at_new_position
+   Address
+       .where('position IS NOT NULL AND position >= ? AND id != ?', position, id)
+       .update_all('position = position + 1')
+  end
+
+  def reorder_addresses
+    return unless saved_change_to_position?
+
+    old_position = position_before_last_save
+    new_position = position
+
+    position_difference = old_position - new_position
+    shift_direction = position_difference > 0 ? 1 : -1
+    range = shift_direction > 0 ? new_position...old_position : old_position..new_position
+
+    Address
+        .where('position IN (?) and id != ?', range, id)
+        .update_all("position = position + #{shift_direction}")
+  end
 end

@@ -4,10 +4,14 @@
       <%= f.input :city %>
       <%= f.input :state %>
       <%= f.input :zip %>
-      <%= f.input :is_job_address?, label: 'Do you perform work at this address?' %>
-      <br>
-      <label class='manual-label'>Job Order</label>
-      <%= f.input :position, label: false, wrapper_html: { class: 'numerical-input' }  %>
+      <div class='custom-input'>
+        <label class='manual-label'>Do you perform work at this address?</label>
+        <%= f.input :is_job_address?, label: false, wrapper_html: { class: 'checkbox' } %>
+      </div>
+      <div class='job-order-container custom-input'>
+        <label class='manual-label'>Job Order</label>
+        <%= f.input :position, label: false, wrapper_html: { class: 'numerical-input' }  %>
+      </div>
       <%= f.button :submit%>
   <% end %>
 </div>

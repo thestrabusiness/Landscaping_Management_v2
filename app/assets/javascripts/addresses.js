@@ -2,11 +2,11 @@ $(document).on('turbolinks:load', function () {
     $('#address_is_job_address').on('change', function() {
         if ( this.checked )
         {
-            $(".address_position").show();
+            $(".job-order-container").show();
         }
         else
         {
-            $(".address_position").hide();
+            $(".job-order-container").hide();
         }
     });
 

@@ -20,7 +20,18 @@ class AddressesController < ApplicationController
 
   def edit
     set_address
-    @client = Client.find(params[:client_id])
+    @client = @address.client
+  end
+
+  def update
+    set_address
+    @client = @address.client
+    if @address.update(address_params)
+      redirect_to @client, notice: 'Address was successfully updated!'
+    else
+      flash.now[:notice] = 'There was a problem saving the address!'
+      render :edit
+    end
   end
 
   private
@@ -30,6 +41,6 @@ class AddressesController < ApplicationController
   end
 
   def address_params
-    params.require(:address).permit(:street, :city, :state, :zip, :client_id)
+    params.require(:address).permit(:street, :city, :state, :zip, :position, :is_job_address?, :client_id)
   end
 end

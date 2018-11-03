@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'acts_as_list'
 gem 'bourbon', '4.2.7'
 gem 'coffee-rails', '~> 4.2'
 gem 'combine_pdf'
