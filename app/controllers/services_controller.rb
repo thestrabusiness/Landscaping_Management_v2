@@ -1,4 +1,4 @@
-class ServicesController < ApplicationController
+class ServicesController < AuthenticatedController
   def index
     @new_service = Service.new
     @services = Service.all

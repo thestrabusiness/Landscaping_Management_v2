@@ -1,4 +1,4 @@
-class InvoiceItemsController < ApplicationController
+class InvoiceItemsController < AuthenticatedController
   def new
     @invoice_item = InvoiceItem.new
     @invoice = Invoice.find(params[:invoice_id])

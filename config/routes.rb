@@ -1,5 +1,7 @@
-Rails.application.routes.draw do
+require 'oath/constraints/signed_in'
+require 'oath/constraints/signed_out'
 
+Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create]
   resources :clients do
@@ -45,5 +47,11 @@ Rails.application.routes.draw do
 
   resources :payments, except: :show
 
-  root 'clients#index'
+  constraints Oath::Constraints::SignedIn.new do
+    root 'clients#index'
+  end
+
+  constraints Oath::Constraints::SignedOut.new do
+    root 'sessions#new'
+  end
 end

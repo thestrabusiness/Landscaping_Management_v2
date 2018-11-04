@@ -1,4 +1,4 @@
-class EstimatesController < ApplicationController
+class EstimatesController < AuthenticatedController
   def index
     @estimates = Estimate.all
   end

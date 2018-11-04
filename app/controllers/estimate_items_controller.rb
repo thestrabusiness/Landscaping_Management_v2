@@ -1,4 +1,4 @@
-class EstimateItemsController < ApplicationController
+class EstimateItemsController < AuthenticatedController
   def new
     @estimate_item = EstimateItem.new
     @estimate = Estimate.find(params[:estimate_id])

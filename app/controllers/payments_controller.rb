@@ -1,4 +1,4 @@
-class PaymentsController < ApplicationController
+class PaymentsController < AuthenticatedController
   def index
     @payments = Payment.includes(:client, :invoice)
   end

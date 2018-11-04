@@ -1,4 +1,4 @@
-class ClientsController < ApplicationController
+class ClientsController < AuthenticatedController
   def index
     @query = params[:query]
     @clients = Client.preload(:addresses).search(@query).uniq

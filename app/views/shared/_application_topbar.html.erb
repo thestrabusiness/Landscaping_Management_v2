@@ -1,7 +1,9 @@
 <div class='application-topbar'>
-  <div class='logout'>
-    <%= link_to 'Logout' %>
-  </div>
+  <% if signed_in? %>
+    <div class='logout'>
+      <%= link_to 'Logout', session_path, method: :delete%>
+    </div>
+  <% end %>
 
   <div class='application-topbar-title'>
     Moffa Landscaping

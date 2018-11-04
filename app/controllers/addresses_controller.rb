@@ -1,4 +1,4 @@
-class AddressesController < ApplicationController
+class AddressesController < AuthenticatedController
   def new
     @address = Address.new
     @client = Client.find(params[:client_id])

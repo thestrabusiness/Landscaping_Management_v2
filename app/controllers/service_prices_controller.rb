@@ -1,4 +1,4 @@
-class ServicePricesController < ApplicationController
+class ServicePricesController < AuthenticatedController
   def new
     @service_price = ServicePrice.new
     @address = Address.find(params[:address_id])
