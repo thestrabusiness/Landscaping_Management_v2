@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def create
     user = authenticate_session(session_params)
 
-    if user.approved? && sign_in(user)
+    if user && user.approved? && sign_in(user)
       redirect_to root_path
     else
       flash.now[:error] = 'You entered the wrong user name or password, or you account has not been approved.'

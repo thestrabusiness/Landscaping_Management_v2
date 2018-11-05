@@ -6,10 +6,10 @@ class UsersController < ApplicationController
   def create
     @user = sign_up(user_params)
 
-    if @user.valid? && @user.approved?
+    if @user.persisted? && @user.approved?
       sign_in(@user)
       redirect_to root_path
-    elsif @user.valid? && !@user.approved?
+    elsif @user.persisted? && !@user.approved?
       redirect_to new_session_path, notice: 'Account created successfully. Please wait for admin approval before logging in'
     else
       render :new
