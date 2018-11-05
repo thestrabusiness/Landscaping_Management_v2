@@ -30,7 +30,7 @@ class PaymentsController < AuthenticatedController
   def update
     set_payment
 
-    if @payment.amount_changed? && @payment.save && update_client_balance_with_payment_amount_difference
+    if  @payment.save && @payment.saved_change_to_amount? && update_client_balance_with_payment_amount_difference
       redirect_to payment_path(@payment), notice: 'Payment and client balance updated.'
     elsif @payment.save
       redirect_to payment_path(@payment), notice: 'Payment updated.'

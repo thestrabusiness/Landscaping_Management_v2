@@ -7,6 +7,6 @@ class Payment < ApplicationRecord
   validates :invoice, presence: true
 
   def amount_difference
-    amount_was - amount
+    amount_before_last_save - amount
   end
 end
