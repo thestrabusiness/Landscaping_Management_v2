@@ -4,6 +4,7 @@ class ClientsController < AuthenticatedController
     @clients = Client
                    .includes(:billing_address)
                    .search(@query)
+                   .distinct
                    .page(params[:page])
   end
 

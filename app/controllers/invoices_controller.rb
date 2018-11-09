@@ -3,6 +3,7 @@ class InvoicesController < AuthenticatedController
     @invoices = Invoice
                     .includes(:job_address, :client)
                     .order(job_date: :desc)
+                    .distinct
                     .page(params[:page])
                     .per(30)
   end

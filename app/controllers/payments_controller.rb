@@ -3,6 +3,7 @@ class PaymentsController < AuthenticatedController
     @payments = Payment
                     .includes(:client, :invoice)
                     .order(date_received: :desc)
+                    .distinct
                     .page(params[:page])
   end
 
