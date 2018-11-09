@@ -1,6 +1,9 @@
 class PaymentsController < AuthenticatedController
   def index
-    @payments = Payment.includes(:client, :invoice)
+    @payments = Payment
+                    .includes(:client, :invoice)
+                    .order(date_received: :desc)
+                    .page(params[:page])
   end
 
   def show

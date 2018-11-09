@@ -1,7 +1,10 @@
 class ClientsController < AuthenticatedController
   def index
     @query = params[:query]
-    @clients = Client.preload(:addresses).search(@query).uniq
+    @clients = Client
+                   .includes(:billing_address)
+                   .search(@query)
+                   .page(params[:page])
   end
 
   def show

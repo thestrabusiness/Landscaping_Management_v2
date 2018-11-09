@@ -63,6 +63,8 @@
   </div>
 <% end %>
 
-  <%= link_to new_invoice_path, class: 'add-record-btn' do %>
-    <%= inline_svg 'add-record-btn.svg' %>
-  <% end %>
+<%= paginate @invoices %>
+
+<%= link_to new_invoice_path, class: 'add-record-btn' do %>
+  <%= inline_svg 'add-record-btn.svg' %>
+<% end %>

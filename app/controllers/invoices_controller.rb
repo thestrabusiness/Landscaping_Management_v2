@@ -1,6 +1,10 @@
 class InvoicesController < AuthenticatedController
   def index
-    @invoices = Invoice.joins(:job_address, :client).order(job_date: :desc)
+    @invoices = Invoice
+                    .includes(:job_address, :client)
+                    .order(job_date: :desc)
+                    .page(params[:page])
+                    .per(30)
   end
 
   def show

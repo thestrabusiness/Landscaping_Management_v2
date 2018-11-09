@@ -29,7 +29,7 @@
     <div class='payments'>
       <%= link_to edit_payment_path(payment), class: 'payment'  do %>
         <div class='payment-list-item payment-date'>
-          <%= payment.created_at.strftime('%m/%d/%y') %>
+          <%= payment.date_received.strftime('%m/%d/%y') %>
         </div>
         <div class='payment-list-item payment-client'>
           <%= payment.client.full_name %>
