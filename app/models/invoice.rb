@@ -6,7 +6,7 @@ class Invoice < ApplicationRecord
 
   time_for_a_boolean :deleted
 
-  # validates :total, :performed_by, :job_date, presence: true
+  validates :total, :performed_by, :job_date, presence: true
   validates :client, presence: true
 
   def self.autocomplete_source

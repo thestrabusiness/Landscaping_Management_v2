@@ -1,5 +1,5 @@
 class Address < ApplicationRecord
-  belongs_to :client
+  belongs_to :client, inverse_of: :billing_address
   has_many :invoices
   has_many :service_prices
   has_many :estimates
@@ -11,9 +11,8 @@ class Address < ApplicationRecord
   after_create :insert_at_new_position
   after_update :reorder_addresses
 
-  def self.job_addresses
-    where(billing_address: false)
-  end
+  scope :billing, -> { where(billing_address: true) }
+  scope :job, -> { where(billing_address: false) }
 
   def self.autocomplete_source
     order(:client_id).map{ |address| { label: address.full_address, id: address.id }}

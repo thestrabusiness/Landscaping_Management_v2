@@ -1,6 +1,6 @@
 class InvoicesController < AuthenticatedController
   def index
-    @invoices = Invoice.all
+    @invoices = Invoice.joins(:job_address, :client).order(job_date: :desc)
   end
 
   def show

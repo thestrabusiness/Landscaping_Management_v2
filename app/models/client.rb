@@ -3,6 +3,7 @@ class Client < ApplicationRecord
   has_many :invoices
   has_many :payments
   has_many :addresses
+  has_many :job_addresses, -> { where(billing_address: false) }, class_name: 'Address'
   has_many :estimates, through: :addresses
   belongs_to :billing_address, class_name: 'Address'
 
