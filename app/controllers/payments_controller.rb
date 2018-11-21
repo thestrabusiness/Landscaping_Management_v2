@@ -20,7 +20,7 @@ class PaymentsController < AuthenticatedController
     @payment = Payment.new(payment_params)
 
     if @payment.save && credit_payment_to_client_balance
-      redirect_to payments_path, notice: 'Payment was added successfully!'
+      add_another_or_show_index
     else
       flash.now[:notice] = 'There was an error saving the payment.'
       render :new
@@ -55,6 +55,14 @@ class PaymentsController < AuthenticatedController
   end
 
   private
+
+  def add_another_or_show_index
+    if params[:add_another]
+      redirect_to new_payment_path(add_another: true), notice: 'Payment added'
+    else
+      redirect_to payments_path, notice: 'Payment added'
+    end
+  end
 
   def credit_payment_to_client_balance
     ActiveRecord::Base.transaction do
@@ -101,6 +109,7 @@ class PaymentsController < AuthenticatedController
                                     :invoice_id,
                                     :client_id,
                                     :payment_type,
-                                    :amount)
+                                    :amount,
+                                    :date_received)
   end
 end

@@ -29,7 +29,7 @@ class Client < ApplicationRecord
   end
 
   def self.autocomplete_source
-    all.map{ |client| { label: client.summary, id: client.id }}
+    includes(:billing_address).map{ |client| { label: client.summary, id: client.id }}
   end
 
   def summary

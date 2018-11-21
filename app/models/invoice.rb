@@ -10,7 +10,7 @@ class Invoice < ApplicationRecord
   validates :client, presence: true
 
   def self.autocomplete_source
-    order(:client_id).map{ |invoice| { label: invoice.summary, id: invoice.id }}
+    includes(:client, :job_address).order(:client_id).map{ |invoice| { label: invoice.summary, id: invoice.id }}
   end
 
   def summary

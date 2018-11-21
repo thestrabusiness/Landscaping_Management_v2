@@ -1,6 +1,6 @@
 <div class='form-container'>
   <%= simple_form_for @payment do |f| %>
-    <%= f.input :date_received, as: :date%>
+    <%= f.input :date_received, as: :date %>
 
     <%= f.input :client,
                 as: :string,
@@ -21,6 +21,11 @@
     <%= f.input :amount, as: :decimal %>
 
     <%= f.input :payment_type %>
+
+    <div class='custom-input'>
+      <label class='manual-label'>Add another</label>
+      <%= check_box_tag :add_another, 1,  params.key?(:add_another) %>
+    </div>
 
     <%= f.button :submit %>
   <% end %>
