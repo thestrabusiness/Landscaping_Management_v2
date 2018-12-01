@@ -48,6 +48,9 @@
   <% end %>
 </div>
 
+<div style='height: 50px;'></div>
+<%= paginate @payments %>
+
 <%= link_to new_payment_path, class: 'add-record-btn' do %>
   <%= inline_svg 'add-record-btn.svg' %>
 <% end %>
