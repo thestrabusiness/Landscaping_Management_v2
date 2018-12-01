@@ -1,5 +1,5 @@
 <%= simple_form_for [@invoice] do |f| %>
-    <%= f.input :job_date, as: :date %>
+    <%= f.input :job_date, as: :date, default: (Date.today - 1.month).end_of_month %>
     <%= f.input :performed_by %>
     <%= f.input :job_address,
                 as: :string,
