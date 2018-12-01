@@ -11,7 +11,7 @@ class Client < ApplicationRecord
 
   time_for_a_boolean :deleted
 
-  validates :first_name, :last_name, :phone_number, presence: true
+  validates :first_name, :last_name, presence: true
 
   def self.default_scope
     where(deleted_at: nil)

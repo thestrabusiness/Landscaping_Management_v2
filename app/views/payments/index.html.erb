@@ -35,7 +35,7 @@
           <%= payment.client.full_name %>
         </div>
         <div class='payment-list-item payment-invoice'>
-          <%= payment.invoice.id %>
+          <%= payment.invoice&.id %>
         </div>
         <div class='payment-list-item payment-type'>
           <%= payment.payment_type %>
