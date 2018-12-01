@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function () {
-    initPaymentInvoiceAutocomplete();
+    // initPaymentInvoiceAutocomplete();
     initPaymentClientAutocomplete();
 });
 

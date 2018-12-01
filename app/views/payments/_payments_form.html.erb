@@ -10,14 +10,6 @@
                 } %>
     <%= f.hidden_field :client_id %>
 
-    <%= f.input :invoice,
-                as: :string,
-                input_html: {
-                    value: @payment.invoice&.summary,
-                    data: { autocomplete_source: Invoice.autocomplete_source }
-                } %>
-    <%= f.hidden_field :invoice_id %>
-
     <%= f.input :amount, as: :decimal %>
 
     <%= f.input :payment_type %>
