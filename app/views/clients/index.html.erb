@@ -5,13 +5,13 @@
     <div class='client-count'>
       <%= @clients.count %> <%= 'Client'.pluralize(@clients.count) %>
     </div>
-    <div class='client-search-form'>
+    <div class='titlebar-pull-right'>
       <%= form_tag(clients_path, method: :get) do %>
           <%= text_field_tag :query, params[:query] %>
           <%= submit_tag 'Search', name: nil %>
       <% end %>
     </div>
-    <div class='client-reminders-button'>
+    <div class='titlebar-pull-right'>
       <%= button_to 'Client List', summary_clients_path, method: :get %>
       <%= button_to 'Generate Reminders', reminders_clients_path, method: :get %>
     </div>

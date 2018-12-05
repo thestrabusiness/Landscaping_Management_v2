@@ -76,6 +76,8 @@
 
   .invoice-count {
     @include position(relative, 23px null null 30px);
+    width: 50%;
+    margin-right: 0;
 
     color: $white;
     font-size: $medium-large-font-size;

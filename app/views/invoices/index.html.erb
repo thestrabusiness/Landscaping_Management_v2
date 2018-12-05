@@ -5,9 +5,23 @@
     <div class='invoice-count'>
       <%= @invoices.count %> <%= 'Invoice'.pluralize(@invoices.count) %>
     </div>
+    <div class='titlebar-pull-right'>
+      <%= form_tag invoices_path, method: :get do %>
+        <div class='stacked-select'>
+          From: <%= date_select :invoice,
+                                :date_from,
+                                selected: DateSelectHelper.new(params, :invoice, :date_from).parse(30.days.ago.to_date) %>
+          To: <%= date_select :invoice,
+                              :date_to,
+                              selected: DateSelectHelper.new(params, :invoice, :date_to).parse(Date.today)%>
+          <%= submit_tag 'Search' %>
+          <%= link_to 'Clear Search', invoices_path %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
-  <%= form_tag '/', method: :get do %>
+  <%= form_tag '/', method: :get, class: 'js-invoice-select-form' do %>
     <div class='invoice-list-header'>
       <div class='invoice-list-header-item checkbox'>
         <input type="checkbox" id="selectAll" value="selectAll">
@@ -31,10 +45,10 @@
 
     <div class='invoices'>
       <% @invoices.each do |invoice| %>
-        <%= link_to invoice_path(invoice), class: 'invoice'  do %>
           <div class='invoice-list-item checkbox'>
             <%= check_box_tag "selected_invoices[]", invoice.id %>
           </div>
+      <%= link_to invoice_path(invoice), class: 'invoice'  do %>
           <div class='invoice-list-item invoice-date'>
             <%= invoice.job_date.strftime('%m/%d/%y') %>
           </div>
