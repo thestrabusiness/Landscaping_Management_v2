@@ -24,7 +24,6 @@ function hideOtherServiceTextBoxes () {
 function toggleOtherServiceTextBoxes() {
     $('#invoice_item_name').on('change', function(ev) {
         var selected_item = $(ev.currentTarget).val();
-        console.log("Your select value is " + selected_item);
         if ( selected_item === 'Other' )
         {
             $("#other_text_box").show();
@@ -55,7 +54,7 @@ function initInvoiceSelectBoxes() {
 }
 
 function initInvoiceFormSubmitter() {
-    form = $('form');
+    form = $('.js-invoice-select-form');
     $('#jsGeneratePDFInvoices').click(function(){
         form.attr('action', 'invoices/download_pdf_collection');
         form.submit();

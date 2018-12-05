@@ -1,11 +1,6 @@
 class InvoicesController < AuthenticatedController
   def index
-    @invoices = Invoice
-                    .includes(:job_address, :client)
-                    .order(job_date: :desc)
-                    .distinct
-                    .page(params[:page])
-                    .per(30)
+    @invoices = InvoiceSearch.perform(params)
   end
 
   def show
@@ -80,6 +75,14 @@ class InvoicesController < AuthenticatedController
   end
 
   private
+
+  def date_from
+    Date.parse(params[:date_from] || 60.days.ago.to_s)
+  end
+
+  def date_to
+    Date.parse(params[:date_to] || Date.today.to_s)
+  end
 
   def set_invoice
     @invoice = Invoice.find(params[:id])
