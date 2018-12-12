@@ -14,7 +14,8 @@
   .payment-list-header-item.payment-client,
   .payment-list-header-item.payment-invoice,
   .payment-list-header-item.payment-type,
-  .payment-list-header-item.payment-amount {
+  .payment-list-header-item.payment-amount,
+  .payment-list-header-item.destroy-button{
     @include span-columns(3 of 16)
   }
 
@@ -31,7 +32,8 @@
   .payment-list-item.payment-client,
   .payment-list-item.payment-invoice,
   .payment-list-item.payment-type,
-  .payment-list-item.payment-amount {
+  .payment-list-item.payment-amount,
+  .payment-list-item.destroy-button{
     @include span-columns(3 of 16)
   }
 }
@@ -66,6 +68,18 @@
 }
 
 .payment {
+
+  a {
+    color: $base-font-color;
+    &:hover {
+      color: $tomato;
+
+      g {
+        stroke: $tomato;
+      }
+    }
+  }
+
   color: $base-font-color;
   height: $row-height;
   display: block;
@@ -78,11 +92,5 @@
     background-color: $off-white;
   }
 
-  &:hover {
-    color: $tomato;
 
-    g {
-      stroke: $tomato;
-    }
-  }
 }

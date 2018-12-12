@@ -43,7 +43,11 @@ class InvoicesController < AuthenticatedController
 
   def destroy
     set_invoice
-    @invoice.update(deleted:  true)
+    @invoice.client.balance -= @invoice.total
+    if @invoice.update(deleted: true) && @invoice.client.save
+
+      redirect_to invoices_path, notice: 'Invoice deleted. Client balance updated.'
+    end
   end
 
   def download_labels

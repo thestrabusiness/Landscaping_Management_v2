@@ -50,7 +50,12 @@
   <div class='invoice-bottom-container'>
     <div class='left-buttons'>
         <%= link_to 'Edit Invoice Details', edit_invoice_path(@invoice) %> |
-        <%= link_to 'Download as DF', download_pdf_invoice_path(@invoice) %> |
+        <%= link_to 'Download as PDF', download_pdf_invoice_path(@invoice) %> |
+        <%= link_to 'Delete', { action: :destroy, id: @invoice.id },
+                    method: :delete,
+                    data: {
+                        confirm: 'Are you sure you want to delete this entire invoice? Client balance will be affected.'
+                    } %>
     </div>
     <div class='invoice-total'>
       <h3>Invoice Total: <%= number_to_currency(@invoice.total) %></h3>

@@ -9,6 +9,8 @@ class Invoice < ApplicationRecord
   validates :total, :performed_by, :job_date, presence: true
   validates :client, presence: true
 
+  default_scope -> { where(deleted_at: nil) }
+
   def self.autocomplete_source
     includes(:client, :job_address).order(:client_id).map{ |invoice| { label: invoice.summary, id: invoice.id }}
   end

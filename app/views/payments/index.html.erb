@@ -14,36 +14,38 @@
     <div class='payment-list-header-item payment-client'>
       Client
     </div>
-    <div class='payment-list-header-item payment-invoice'>
-      Invoice ID
-    </div>
     <div class='payment-list-header-item payment-type'>
       Type
     </div>
     <div class='payment-list-header-item payment-amount'>
       Amount
     </div>
+    <div class='payment-list-header-item destroy-button'>
+      -
+    </div>
   </div>
 
   <% @payments.each do |payment| %>
     <div class='payments'>
-      <%= link_to edit_payment_path(payment), class: 'payment'  do %>
-        <div class='payment-list-item payment-date'>
-          <%= payment.date_received.strftime('%m/%d/%y') %>
-        </div>
-        <div class='payment-list-item payment-client'>
-          <%= payment.client.full_name %>
-        </div>
-        <div class='payment-list-item payment-invoice'>
-          <%= payment.invoice&.id %>
-        </div>
-        <div class='payment-list-item payment-type'>
-          <%= payment.payment_type %>
-        </div>
-        <div class='payment-list-item payment-amount'>
-          <%= payment.amount %>
-        </div>
-      <% end %>
+      <div class='payment'>
+        <%= link_to edit_payment_path(payment)  do %>
+          <div class='payment-list-item payment-date'>
+            <%= payment.date_received.strftime('%m/%d/%y') %>
+          </div>
+          <div class='payment-list-item payment-client'>
+            <%= payment.client.full_name %>
+          </div>
+          <div class='payment-list-item payment-type'>
+            <%= payment.payment_type %>
+          </div>
+          <div class='payment-list-item payment-amount'>
+            <%= payment.amount %>
+          </div>
+        <% end %>
+          <div class='payment-list-item destroy-button'>
+            <%= link_to 'Delete', { action: :destroy, id: payment.id }, method: :delete, data: { confirm: 'This action could effect the integrity of your billing records. Are you sure you want to proceed?' } %>
+          </div>
+      </div>
     </div>
   <% end %>
 </div>
